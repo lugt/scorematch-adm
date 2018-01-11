@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="smart.mall.dao.SysVisitLogDao">
+
+    <resultMap id="sysVisitLogMap" type="smart.mall.domain.SysVisitLogDO">
+        <id column="log_id" property="logId"/>
+        <result column="log_time" property="logTime"/>
+        <result column="call_api" property="callApi"/>
+        <result column="api_desc" property="apiDesc"/>
+        <result column="user_no" property="userNo"/>
+        <result column="device" property="device"/>
+        <result column="remote_addr" property="remoteAddr"/>
+        <result column="remote_host" property="remoteHost"/>
+        <result column="input_params" property="inputParams"/>
+        <result column="error" property="error"/>
+        <result column="time_consuming" property="timeConsuming"/>
+        <result column="bak" property="bak"/>
+    </resultMap>
+
+    <sql id="allField">
+        log_id,log_time,call_api,api_desc,user_no,device,remote_addr,remote_host,input_params,error,time_consuming,bak
+    </sql>
+
+    <insert id="save" useGeneratedKeys="false" keyProperty="logId" parameterType="smart.mall.domain.SysVisitLogDO">
+        insert into sys_visit_log
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="logId != null" >
+                log_id, 
+            </if>
+            <if test="logTime != null" >
+                log_time, 
+            </if>
+            <if test="callApi != null and callApi != ''" >
+                call_api, 
+            </if>
+            <if test="apiDesc != null and apiDesc != ''" >
+                api_desc, 
+            </if>
+            <if test="userNo != null and userNo != ''" >
+                user_no, 
+            </if>
+            <if test="device != null and device != ''" >
+                device, 
+            </if>
+            <if test="remoteAddr != null and remoteAddr != ''" >
+                remote_addr, 
+            </if>
+            <if test="remoteHost != null and remoteHost != ''" >
+                remote_host, 
+            </if>
+            <if test="inputParams != null and inputParams != ''" >
+                input_params, 
+            </if>
+            <if test="error != null" >
+                error, 
+            </if>
+            <if test="timeConsuming != null" >
+                time_consuming, 
+            </if>
+            <if test="bak != null and bak != ''" >
+                bak, 
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="logId != null" >
+                #{logId}, 
+            </if>
+            <if test="logTime != null" >
+                #{logTime}, 
+            </if>
+            <if test="callApi != null and callApi != ''" >
+                #{callApi}, 
+            </if>
+            <if test="apiDesc != null and apiDesc != ''" >
+                #{apiDesc}, 
+            </if>
+            <if test="userNo != null and userNo != ''" >
+                #{userNo}, 
+            </if>
+            <if test="device != null and device != ''" >
+                #{device}, 
+            </if>
+            <if test="remoteAddr != null and remoteAddr != ''" >
+                #{remoteAddr}, 
+            </if>
+            <if test="remoteHost != null and remoteHost != ''" >
+                #{remoteHost}, 
+            </if>
+            <if test="inputParams != null and inputParams != ''" >
+                #{inputParams}, 
+            </if>
+            <if test="error != null" >
+                #{error}, 
+            </if>
+            <if test="timeConsuming != null" >
+                #{timeConsuming}, 
+            </if>
+            <if test="bak != null and bak != ''" >
+                #{bak}, 
+            </if>
+        </trim>
+    </insert>
+
+    <update id="update" parameterType="smart.mall.domain.SysVisitLogDO">
+        update sys_visit_log
+        <set>
+            <if test="logTime != null" >
+                log_time = #{logTime}, 
+            </if>
+            <if test="callApi != null" >
+                call_api = #{callApi}, 
+            </if>
+            <if test="apiDesc != null" >
+                api_desc = #{apiDesc}, 
+            </if>
+            <if test="userNo != null" >
+                user_no = #{userNo}, 
+            </if>
+            <if test="device != null" >
+                device = #{device}, 
+            </if>
+            <if test="remoteAddr != null" >
+                remote_addr = #{remoteAddr}, 
+            </if>
+            <if test="remoteHost != null" >
+                remote_host = #{remoteHost}, 
+            </if>
+            <if test="inputParams != null" >
+                input_params = #{inputParams}, 
+            </if>
+            <if test="error != null" >
+                error = #{error}, 
+            </if>
+            <if test="timeConsuming != null" >
+                time_consuming = #{timeConsuming}, 
+            </if>
+            <if test="bak != null" >
+                bak = #{bak}, 
+            </if>
+        </set>
+        where log_id = #{logId}
+    </update>
+
+    <update id="updateByExample">
+        update sys_visit_log
+        <set>
+            <if test="update.logTime != null" >
+                log_time = #{update.logTime}, 
+            </if>
+            <if test="update.callApi != null" >
+                call_api = #{update.callApi}, 
+            </if>
+            <if test="update.apiDesc != null" >
+                api_desc = #{update.apiDesc}, 
+            </if>
+            <if test="update.userNo != null" >
+                user_no = #{update.userNo}, 
+            </if>
+            <if test="update.device != null" >
+                device = #{update.device}, 
+            </if>
+            <if test="update.remoteAddr != null" >
+                remote_addr = #{update.remoteAddr}, 
+            </if>
+            <if test="update.remoteHost != null" >
+                remote_host = #{update.remoteHost}, 
+            </if>
+            <if test="update.inputParams != null" >
+                input_params = #{update.inputParams}, 
+            </if>
+            <if test="update.error != null" >
+                error = #{update.error}, 
+            </if>
+            <if test="update.timeConsuming != null" >
+                time_consuming = #{update.timeConsuming}, 
+            </if>
+            <if test="update.bak != null" >
+                bak = #{update.bak}, 
+            </if>
+        </set>
+        where 1 = 1 
+        <if test="example.logId != null" >
+            and log_id = #{example.logId} 
+        </if>
+        <if test="example.logTime != null" >
+            and log_time = #{example.logTime} 
+        </if>
+        <if test="example.callApi != null" >
+            and call_api = #{example.callApi} 
+        </if>
+        <if test="example.apiDesc != null" >
+            and api_desc = #{example.apiDesc} 
+        </if>
+        <if test="example.userNo != null" >
+            and user_no = #{example.userNo} 
+        </if>
+        <if test="example.device != null" >
+            and device = #{example.device} 
+        </if>
+        <if test="example.remoteAddr != null" >
+            and remote_addr = #{example.remoteAddr} 
+        </if>
+        <if test="example.remoteHost != null" >
+            and remote_host = #{example.remoteHost} 
+        </if>
+        <if test="example.inputParams != null" >
+            and input_params = #{example.inputParams} 
+        </if>
+        <if test="example.error != null" >
+            and error = #{example.error} 
+        </if>
+        <if test="example.timeConsuming != null" >
+            and time_consuming = #{example.timeConsuming} 
+        </if>
+        <if test="example.bak != null" >
+            and bak = #{example.bak} 
+        </if>
+    </update>
+
+    <delete id="delete">
+        delete from sys_visit_log
+        where log_id = #{key}
+    </delete>
+
+    <delete id="deleteByKey">
+        delete from sys_visit_log
+        where log_id = #{delete.logId}
+    </delete>
+
+    <delete id="deleteByExample"> 
+        delete from sys_visit_log
+        where 1 = 1 
+        <if test="example.logId != null" >
+            and log_id = #{example.logId} 
+        </if>
+        <if test="example.logTime != null" >
+            and log_time = #{example.logTime} 
+        </if>
+        <if test="example.callApi != null" >
+            and call_api = #{example.callApi} 
+        </if>
+        <if test="example.apiDesc != null" >
+            and api_desc = #{example.apiDesc} 
+        </if>
+        <if test="example.userNo != null" >
+            and user_no = #{example.userNo} 
+        </if>
+        <if test="example.device != null" >
+            and device = #{example.device} 
+        </if>
+        <if test="example.remoteAddr != null" >
+            and remote_addr = #{example.remoteAddr} 
+        </if>
+        <if test="example.remoteHost != null" >
+            and remote_host = #{example.remoteHost} 
+        </if>
+        <if test="example.inputParams != null" >
+            and input_params = #{example.inputParams} 
+        </if>
+        <if test="example.error != null" >
+            and error = #{example.error} 
+        </if>
+        <if test="example.timeConsuming != null" >
+            and time_consuming = #{example.timeConsuming} 
+        </if>
+        <if test="example.bak != null" >
+            and bak = #{example.bak} 
+        </if>
+    </delete>
+
+    <select id="countByExample" resultType="java.lang.Integer"> 
+        select count(*) from sys_visit_log where 1 = 1 
+        <if test="example.logId != null" >
+            and log_id = #{example.logId} 
+        </if>
+        <if test="example.logTime != null" >
+            and log_time = #{example.logTime} 
+        </if>
+        <if test="example.beginTime != null" >
+            <![CDATA[and log_time >= #{example.beginTime}]]> 
+        </if>
+        <if test="example.endTime != null" >
+            <![CDATA[and log_time < DATE_ADD(#{example.endTime},INTERVAL 1 DAY)]]>   
+        </if>
+        <if test="example.callApi != null and example.callApi != ''" >
+            and call_api = #{example.callApi} 
+        </if>
+        <if test="example.apiDesc != null and example.apiDesc != ''" >
+            and api_desc = #{example.apiDesc} 
+        </if>
+        <if test="example.userNo != null and example.userNo != ''" >
+            and user_no = #{example.userNo} 
+        </if>
+        <if test="example.userName != null and example.userName != ''" >
+            and user_no in (SELECT user_no FROM sys_user WHERE user_name LIKE CONCAT('%', #{example.userName}, '%'))
+        </if>
+        <if test="example.device != null and example.device != ''" >
+            and device = #{example.device} 
+        </if>
+        <if test="example.remoteAddr != null and example.remoteAddr != ''" >
+            and remote_addr = #{example.remoteAddr} 
+        </if>
+        <if test="example.remoteHost != null and example.remoteHost != ''" >
+            and remote_host = #{example.remoteHost} 
+        </if>
+        <if test="example.inputParams != null and example.inputParams != ''" >
+            and input_params = #{example.inputParams} 
+        </if>
+        <if test="example.error != null" >
+            and error = #{example.error} 
+        </if>
+        <if test="example.timeConsuming != null" >
+            and time_consuming = #{example.timeConsuming} 
+        </if>
+        <if test="example.bak != null and example.bak != ''" >
+            and bak = #{example.bak} 
+        </if>
+    </select>
+
+    <select id="listByExample"  resultMap="sysVisitLogMap">
+        select <include refid="allField" />
+        from sys_visit_log where 1 = 1 
+        <if test="example.logId != null" >
+            and log_id = #{example.logId} 
+        </if>
+        <if test="example.logTime != null" >
+            and log_time = #{example.logTime} 
+        </if>
+        <if test="example.beginTime != null" >
+            <![CDATA[and log_time >= #{example.beginTime}]]> 
+        </if>
+        <if test="example.endTime != null" >
+            <![CDATA[and log_time < DATE_ADD(#{example.endTime},INTERVAL 1 DAY)]]>   
+        </if>
+        <if test="example.callApi != null and example.callApi != ''" >
+            and call_api = #{example.callApi} 
+        </if>
+        <if test="example.apiDesc != null and example.apiDesc != ''" >
+            and api_desc = #{example.apiDesc} 
+        </if>
+        <if test="example.userNo != null and example.userNo != ''" >
+            and user_no = #{example.userNo} 
+        </if>
+        <if test="example.userName != null and example.userName != ''" >
+            and user_no in (SELECT user_no FROM sys_user WHERE user_name LIKE CONCAT('%', #{example.userName}, '%'))
+        </if>
+        <if test="example.device != null and example.device != ''" >
+            and device = #{example.device} 
+        </if>
+        <if test="example.remoteAddr != null and example.remoteAddr != ''" >
+            and remote_addr = #{example.remoteAddr} 
+        </if>
+        <if test="example.remoteHost != null and example.remoteHost != ''" >
+            and remote_host = #{example.remoteHost} 
+        </if>
+        <if test="example.inputParams != null and example.inputParams != ''" >
+            and input_params = #{example.inputParams} 
+        </if>
+        <if test="example.error != null" >
+            and error = #{example.error} 
+        </if>
+        <if test="example.timeConsuming != null" >
+            and time_consuming = #{example.timeConsuming} 
+        </if>
+        <if test="example.bak != null and example.bak != ''" >
+            and bak = #{example.bak} 
+        </if>
+        <if test="orderBy != null" >
+            order by ${orderBy} 
+        </if>
+        limit ${pageSize} offset ${(page - 1) * pageSize}
+    </select>
+
+    <select id="getByKey" resultMap="sysVisitLogMap">
+        select <include refid="allField"/>
+        from sys_visit_log where log_id = #{key}
+    </select>
+
+
+</mapper>
+

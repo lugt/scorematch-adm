@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="smart.mall.dao.SmartDeliveryAddrDao"> 
+
+    <resultMap id="smartDeliveryAddrMap" type="smart.mall.domain.SmartDeliveryAddrDO">
+        <id column="addrid" property="addrid"/>
+        <result column="uid" property="uid"/>
+        <result column="mobile" property="mobile"/>
+        <result column="recver" property="recver"/>
+        <result column="type" property="type"/>
+        <result column="province" property="province"/>
+        <result column="city" property="city"/>
+        <result column="district" property="district"/>
+        <result column="addr" property="addr"/>
+        <result column="memo" property="memo"/>
+    </resultMap>
+
+    <sql id="allField">
+        addrid,uid,mobile,recver,type,province,city,district,addr,memo
+    </sql>
+
+    <insert id="save" useGeneratedKeys="false" keyProperty="addrid" parameterType="smart.mall.domain.SmartDeliveryAddrDO">
+        insert into smart_delivery_addr
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="addrid != null" >
+                addrid, 
+            </if>
+            <if test="uid != null" >
+                uid, 
+            </if>
+            <if test="mobile != null" >
+                mobile, 
+            </if>
+            <if test="recver != null and recver != ''" >
+                recver, 
+            </if>
+            <if test="type != null" >
+                type, 
+            </if>
+            <if test="province != null" >
+                province, 
+            </if>
+            <if test="city != null" >
+                city, 
+            </if>
+            <if test="district != null" >
+                district, 
+            </if>
+            <if test="addr != null and addr != ''" >
+                addr, 
+            </if>
+            <if test="memo != null and memo != ''" >
+                memo, 
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="addrid != null" >
+                #{addrid}, 
+            </if>
+            <if test="uid != null" >
+                #{uid}, 
+            </if>
+            <if test="mobile != null" >
+                #{mobile}, 
+            </if>
+            <if test="recver != null and recver != ''" >
+                #{recver}, 
+            </if>
+            <if test="type != null" >
+                #{type}, 
+            </if>
+            <if test="province != null" >
+                #{province}, 
+            </if>
+            <if test="city != null" >
+                #{city}, 
+            </if>
+            <if test="district != null" >
+                #{district}, 
+            </if>
+            <if test="addr != null and addr != ''" >
+                #{addr}, 
+            </if>
+            <if test="memo != null and memo != ''" >
+                #{memo}, 
+            </if>
+        </trim>
+    </insert>
+
+    <update id="update" parameterType="smart.mall.domain.SmartDeliveryAddrDO">
+        update smart_delivery_addr
+        <set>
+            <if test="uid != null" >
+                uid = #{uid}, 
+            </if>
+            <if test="mobile != null" >
+                mobile = #{mobile}, 
+            </if>
+            <if test="recver != null" >
+                recver = #{recver}, 
+            </if>
+            <if test="type != null" >
+                type = #{type}, 
+            </if>
+            <if test="province != null" >
+                province = #{province}, 
+            </if>
+            <if test="city != null" >
+                city = #{city}, 
+            </if>
+            <if test="district != null" >
+                district = #{district}, 
+            </if>
+            <if test="addr != null" >
+                addr = #{addr}, 
+            </if>
+            <if test="memo != null" >
+                memo = #{memo}, 
+            </if>
+        </set>
+        where addrid = #{addrid}
+    </update>
+
+    <update id="updateByExample">
+        update smart_delivery_addr
+        <set>
+            <if test="update.uid != null" >
+                uid = #{update.uid}, 
+            </if>
+            <if test="update.mobile != null" >
+                mobile = #{update.mobile}, 
+            </if>
+            <if test="update.recver != null" >
+                recver = #{update.recver}, 
+            </if>
+            <if test="update.type != null" >
+                type = #{update.type}, 
+            </if>
+            <if test="update.province != null" >
+                province = #{update.province}, 
+            </if>
+            <if test="update.city != null" >
+                city = #{update.city}, 
+            </if>
+            <if test="update.district != null" >
+                district = #{update.district}, 
+            </if>
+            <if test="update.addr != null" >
+                addr = #{update.addr}, 
+            </if>
+            <if test="update.memo != null" >
+                memo = #{update.memo}, 
+            </if>
+        </set>
+        where 1 = 1 
+        <if test="example.addrid != null" >
+            and addrid = #{example.addrid} 
+        </if>
+        <if test="example.uid != null" >
+            and uid = #{example.uid} 
+        </if>
+        <if test="example.mobile != null" >
+            and mobile = #{example.mobile} 
+        </if>
+        <if test="example.recver != null" >
+            and recver = #{example.recver} 
+        </if>
+        <if test="example.type != null" >
+            and type = #{example.type} 
+        </if>
+        <if test="example.province != null" >
+            and province = #{example.province} 
+        </if>
+        <if test="example.city != null" >
+            and city = #{example.city} 
+        </if>
+        <if test="example.district != null" >
+            and district = #{example.district} 
+        </if>
+        <if test="example.addr != null" >
+            and addr = #{example.addr} 
+        </if>
+        <if test="example.memo != null" >
+            and memo = #{example.memo} 
+        </if>
+    </update>
+
+    <delete id="delete">
+        delete from smart_delivery_addr
+        where addrid = #{key}
+    </delete>
+
+    <delete id="deleteByKey">
+        delete from smart_delivery_addr
+        where addrid = #{delete.addrid}
+    </delete>
+
+    <delete id="deleteByExample"> 
+        delete from smart_delivery_addr
+        where 1 = 1 
+        <if test="example.addrid != null" >
+            and addrid = #{example.addrid} 
+        </if>
+        <if test="example.uid != null" >
+            and uid = #{example.uid} 
+        </if>
+        <if test="example.mobile != null" >
+            and mobile = #{example.mobile} 
+        </if>
+        <if test="example.recver != null" >
+            and recver = #{example.recver} 
+        </if>
+        <if test="example.type != null" >
+            and type = #{example.type} 
+        </if>
+        <if test="example.province != null" >
+            and province = #{example.province} 
+        </if>
+        <if test="example.city != null" >
+            and city = #{example.city} 
+        </if>
+        <if test="example.district != null" >
+            and district = #{example.district} 
+        </if>
+        <if test="example.addr != null" >
+            and addr = #{example.addr} 
+        </if>
+        <if test="example.memo != null" >
+            and memo = #{example.memo} 
+        </if>
+    </delete>
+
+    <select id="countByExample" resultType="java.lang.Integer"> 
+        select count(*) from smart_delivery_addr where 1 = 1 
+        <if test="example.addrid != null" >
+            and addrid = #{example.addrid} 
+        </if>
+        <if test="example.uid != null" >
+            and uid = #{example.uid} 
+        </if>
+        <if test="example.mobile != null" >
+            and mobile = #{example.mobile} 
+        </if>
+        <if test="example.recver != null and example.recver != ''" >
+            and recver = #{example.recver} 
+        </if>
+        <if test="example.type != null" >
+            and type = #{example.type} 
+        </if>
+        <if test="example.province != null" >
+            and province = #{example.province} 
+        </if>
+        <if test="example.city != null" >
+            and city = #{example.city} 
+        </if>
+        <if test="example.district != null" >
+            and district = #{example.district} 
+        </if>
+        <if test="example.addr != null and example.addr != ''" >
+            and addr = #{example.addr} 
+        </if>
+        <if test="example.memo != null and example.memo != ''" >
+            and memo = #{example.memo} 
+        </if>
+    </select>
+
+    <select id="listByExample"  resultMap="smartDeliveryAddrMap">
+        select <include refid="allField" />
+        from smart_delivery_addr where 1 = 1 
+        <if test="example.addrid != null" >
+            and addrid = #{example.addrid} 
+        </if>
+        <if test="example.uid != null" >
+            and uid = #{example.uid} 
+        </if>
+        <if test="example.mobile != null" >
+            and mobile = #{example.mobile} 
+        </if>
+        <if test="example.recver != null and example.recver != ''" >
+            and recver = #{example.recver} 
+        </if>
+        <if test="example.type != null" >
+            and type = #{example.type} 
+        </if>
+        <if test="example.province != null" >
+            and province = #{example.province} 
+        </if>
+        <if test="example.city != null" >
+            and city = #{example.city} 
+        </if>
+        <if test="example.district != null" >
+            and district = #{example.district} 
+        </if>
+        <if test="example.addr != null and example.addr != ''" >
+            and addr = #{example.addr} 
+        </if>
+        <if test="example.memo != null and example.memo != ''" >
+            and memo = #{example.memo} 
+        </if>
+        <if test="orderBy != null" >
+            order by ${orderBy} 
+        </if>
+        limit ${pageSize} offset ${(page - 1) * pageSize}
+    </select>
+
+    <select id="getByKey" resultMap="smartDeliveryAddrMap">
+        select <include refid="allField"/>
+        from smart_delivery_addr where addrid = #{key}
+    </select>
+
+
+</mapper>
+
