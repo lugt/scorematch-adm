@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="smart.mall.dao.SysAtachmentDao">
+
+    <resultMap id="sysAtachmentMap" type="smart.mall.domain.SysAtachmentDO">
+        <id column="id" property="id"/>
+        <result column="parent_table_name" property="parentTableName"/>
+        <result column="parent_row_id" property="parentRowId"/>
+        <result column="file_name" property="fileName"/>
+        <result column="file_ext_name" property="fileExtName"/>
+        <result column="file_path" property="filePath"/>
+        <result column="created_by_code" property="createdByCode"/>
+        <result column="created_by_name" property="createdByName"/>
+        <result column="created_on" property="createdOn"/>
+        <result column="created_by" property="createdBy"/>
+        <result column="modified_on" property="modifiedOn"/>
+        <result column="modified_by" property="modifiedBy"/>
+    </resultMap>
+
+    <sql id="allField">
+        id,parent_table_name,parent_row_id,file_name,file_ext_name,file_path,created_by_code,created_by_name,created_on,created_by,modified_on,modified_by
+    </sql>
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="smart.mall.domain.SysAtachmentDO">
+        insert into sys_atachment
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="parentTableName != null and parentTableName != ''" >
+                parent_table_name, 
+            </if>
+            <if test="parentRowId != null and parentRowId != ''" >
+                parent_row_id, 
+            </if>
+            <if test="fileName != null and fileName != ''" >
+                file_name, 
+            </if>
+            <if test="fileExtName != null and fileExtName != ''" >
+                file_ext_name, 
+            </if>
+            <if test="filePath != null and filePath != ''" >
+                file_path, 
+            </if>
+            <if test="createdByCode != null and createdByCode != ''" >
+                created_by_code, 
+            </if>
+            <if test="createdByName != null and createdByName != ''" >
+                created_by_name, 
+            </if>
+            <if test="createdOn != null" >
+                created_on, 
+            </if>
+            <if test="createdBy != null and createdBy != ''" >
+                created_by, 
+            </if>
+            <if test="modifiedOn != null" >
+                modified_on, 
+            </if>
+            <if test="modifiedBy != null and modifiedBy != ''" >
+                modified_by, 
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="parentTableName != null and parentTableName != ''" >
+                #{parentTableName}, 
+            </if>
+            <if test="parentRowId != null and parentRowId != ''" >
+                #{parentRowId}, 
+            </if>
+            <if test="fileName != null and fileName != ''" >
+                #{fileName}, 
+            </if>
+            <if test="fileExtName != null and fileExtName != ''" >
+                #{fileExtName}, 
+            </if>
+            <if test="filePath != null and filePath != ''" >
+                #{filePath}, 
+            </if>
+            <if test="createdByCode != null and createdByCode != ''" >
+                #{createdByCode}, 
+            </if>
+            <if test="createdByName != null and createdByName != ''" >
+                #{createdByName}, 
+            </if>
+            <if test="createdOn != null" >
+                #{createdOn}, 
+            </if>
+            <if test="createdBy != null and createdBy != ''" >
+                #{createdBy}, 
+            </if>
+            <if test="modifiedOn != null" >
+                #{modifiedOn}, 
+            </if>
+            <if test="modifiedBy != null and modifiedBy != ''" >
+                #{modifiedBy}, 
+            </if>
+        </trim>
+    </insert>
+
+    <update id="update" parameterType="smart.mall.domain.SysAtachmentDO">
+        update sys_atachment
+        <set>
+            <if test="parentTableName != null" >
+                parent_table_name = #{parentTableName}, 
+            </if>
+            <if test="parentRowId != null" >
+                parent_row_id = #{parentRowId}, 
+            </if>
+            <if test="fileName != null" >
+                file_name = #{fileName}, 
+            </if>
+            <if test="fileExtName != null" >
+                file_ext_name = #{fileExtName}, 
+            </if>
+            <if test="filePath != null" >
+                file_path = #{filePath}, 
+            </if>
+            <if test="createdByCode != null" >
+                created_by_code = #{createdByCode}, 
+            </if>
+            <if test="createdByName != null" >
+                created_by_name = #{createdByName}, 
+            </if>
+            <if test="createdOn != null" >
+                created_on = #{createdOn}, 
+            </if>
+            <if test="createdBy != null" >
+                created_by = #{createdBy}, 
+            </if>
+            <if test="modifiedOn != null" >
+                modified_on = #{modifiedOn}, 
+            </if>
+            <if test="modifiedBy != null" >
+                modified_by = #{modifiedBy}, 
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <update id="updateByExample">
+        update sys_atachment
+        <set>
+            <if test="update.parentTableName != null" >
+                parent_table_name = #{update.parentTableName}, 
+            </if>
+            <if test="update.parentRowId != null" >
+                parent_row_id = #{update.parentRowId}, 
+            </if>
+            <if test="update.fileName != null" >
+                file_name = #{update.fileName}, 
+            </if>
+            <if test="update.fileExtName != null" >
+                file_ext_name = #{update.fileExtName}, 
+            </if>
+            <if test="update.filePath != null" >
+                file_path = #{update.filePath}, 
+            </if>
+            <if test="update.createdByCode != null" >
+                created_by_code = #{update.createdByCode}, 
+            </if>
+            <if test="update.createdByName != null" >
+                created_by_name = #{update.createdByName}, 
+            </if>
+            <if test="update.createdOn != null" >
+                created_on = #{update.createdOn}, 
+            </if>
+            <if test="update.createdBy != null" >
+                created_by = #{update.createdBy}, 
+            </if>
+            <if test="update.modifiedOn != null" >
+                modified_on = #{update.modifiedOn}, 
+            </if>
+            <if test="update.modifiedBy != null" >
+                modified_by = #{update.modifiedBy}, 
+            </if>
+        </set>
+        where 1 = 1 
+        <if test="example.id != null" >
+            and id = #{example.id} 
+        </if>
+        <if test="example.parentTableName != null" >
+            and parent_table_name = #{example.parentTableName} 
+        </if>
+        <if test="example.parentRowId != null" >
+            and parent_row_id = #{example.parentRowId} 
+        </if>
+        <if test="example.fileName != null" >
+            and file_name = #{example.fileName} 
+        </if>
+        <if test="example.fileExtName != null" >
+            and file_ext_name = #{example.fileExtName} 
+        </if>
+        <if test="example.filePath != null" >
+            and file_path = #{example.filePath} 
+        </if>
+        <if test="example.createdByCode != null" >
+            and created_by_code = #{example.createdByCode} 
+        </if>
+        <if test="example.createdByName != null" >
+            and created_by_name = #{example.createdByName} 
+        </if>
+        <if test="example.createdOn != null" >
+            and created_on = #{example.createdOn} 
+        </if>
+        <if test="example.createdBy != null" >
+            and created_by = #{example.createdBy} 
+        </if>
+        <if test="example.modifiedOn != null" >
+            and modified_on = #{example.modifiedOn} 
+        </if>
+        <if test="example.modifiedBy != null" >
+            and modified_by = #{example.modifiedBy} 
+        </if>
+    </update>
+
+    <delete id="delete">
+        delete from sys_atachment
+        where id = #{key}
+    </delete>
+
+    <delete id="deleteByKey">
+        delete from sys_atachment
+        where id = #{delete.id}
+    </delete>
+
+    <delete id="deleteByExample"> 
+        delete from sys_atachment
+        where 1 = 1 
+        <if test="example.id != null" >
+            and id = #{example.id} 
+        </if>
+        <if test="example.parentTableName != null" >
+            and parent_table_name = #{example.parentTableName} 
+        </if>
+        <if test="example.parentRowId != null" >
+            and parent_row_id = #{example.parentRowId} 
+        </if>
+        <if test="example.fileName != null" >
+            and file_name = #{example.fileName} 
+        </if>
+        <if test="example.fileExtName != null" >
+            and file_ext_name = #{example.fileExtName} 
+        </if>
+        <if test="example.filePath != null" >
+            and file_path = #{example.filePath} 
+        </if>
+        <if test="example.createdByCode != null" >
+            and created_by_code = #{example.createdByCode} 
+        </if>
+        <if test="example.createdByName != null" >
+            and created_by_name = #{example.createdByName} 
+        </if>
+        <if test="example.createdOn != null" >
+            and created_on = #{example.createdOn} 
+        </if>
+        <if test="example.createdBy != null" >
+            and created_by = #{example.createdBy} 
+        </if>
+        <if test="example.modifiedOn != null" >
+            and modified_on = #{example.modifiedOn} 
+        </if>
+        <if test="example.modifiedBy != null" >
+            and modified_by = #{example.modifiedBy} 
+        </if>
+    </delete>
+
+    <select id="countByExample" resultType="java.lang.Integer"> 
+        select count(*) from sys_atachment where 1 = 1 
+        <if test="example.id != null" >
+            and id = #{example.id} 
+        </if>
+        <if test="example.parentTableName != null and example.parentTableName != ''" >
+            and parent_table_name LIKE CONCAT('%', #{example.parentTableName}, '%') 
+        </if>
+        <if test="example.parentRowId != null and example.parentRowId != ''" >
+            and parent_row_id = #{example.parentRowId} 
+        </if>
+        <if test="example.fileName != null and example.fileName != ''" >
+            and file_name LIKE CONCAT('%', #{example.fileName}, '%') 
+        </if>
+        <if test="example.fileExtName != null and example.fileExtName != ''" >
+            and file_ext_name = #{example.fileExtName} 
+        </if>
+        <if test="example.filePath != null and example.filePath != ''" >
+            and file_path = #{example.filePath} 
+        </if>
+        <if test="example.createdByCode != null and example.createdByCode != ''" >
+            and created_by_code = #{example.createdByCode} 
+        </if>
+        <if test="example.createdByName != null and example.createdByName != ''" >
+            and created_by_name = #{example.createdByName} 
+        </if>
+        <if test="example.createdOn != null" >
+            and created_on = #{example.createdOn} 
+        </if>
+        <if test="example.createdBy != null and example.createdBy != ''" >
+            and created_by = #{example.createdBy} 
+        </if>
+        <if test="example.modifiedOn != null" >
+            and modified_on = #{example.modifiedOn} 
+        </if>
+        <if test="example.modifiedBy != null and example.modifiedBy != ''" >
+            and modified_by = #{example.modifiedBy} 
+        </if>
+    </select>
+
+    <select id="listByExample"  resultMap="sysAtachmentMap">
+        select <include refid="allField" />
+        from sys_atachment where 1 = 1 
+        <if test="example.id != null" >
+            and id = #{example.id} 
+        </if>
+        <if test="example.parentTableName != null and example.parentTableName != ''" >
+            and parent_table_name LIKE CONCAT('%', #{example.parentTableName}, '%')
+        </if>
+        <if test="example.parentRowId != null and example.parentRowId != ''" >
+            and parent_row_id = #{example.parentRowId} 
+        </if>
+        <if test="example.fileName != null and example.fileName != ''" >
+            and file_name LIKE CONCAT('%', #{example.fileName}, '%') 
+        </if>
+        <if test="example.fileExtName != null and example.fileExtName != ''" >
+            and file_ext_name = #{example.fileExtName} 
+        </if>
+        <if test="example.filePath != null and example.filePath != ''" >
+            and file_path = #{example.filePath} 
+        </if>
+        <if test="example.createdByCode != null and example.createdByCode != ''" >
+            and created_by_code = #{example.createdByCode} 
+        </if>
+        <if test="example.createdByName != null and example.createdByName != ''" >
+            and created_by_name = #{example.createdByName} 
+        </if>
+        <if test="example.createdOn != null" >
+            and created_on = #{example.createdOn} 
+        </if>
+        <if test="example.createdBy != null and example.createdBy != ''" >
+            and created_by = #{example.createdBy} 
+        </if>
+        <if test="example.modifiedOn != null" >
+            and modified_on = #{example.modifiedOn} 
+        </if>
+        <if test="example.modifiedBy != null and example.modifiedBy != ''" >
+            and modified_by = #{example.modifiedBy} 
+        </if>
+        <if test="orderBy != null" >
+            order by ${orderBy} 
+        </if>
+        limit ${pageSize} offset ${(page - 1) * pageSize}
+    </select>
+
+    <select id="getByKey" resultMap="sysAtachmentMap">
+        select <include refid="allField"/>
+        from sys_atachment where id = #{key}
+    </select>
+
+
+</mapper>
+

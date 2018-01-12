@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="smart.mall.dao.SysMasterServerDao">
+
+    <resultMap id="sysMasterServerMap" type="smart.mall.domain.SysMasterServerDO">
+        <id column="item_id" property="itemId"/>
+        <result column="server_ip" property="serverIp"/>
+        <result column="updatetime" property="updatetime"/>
+    </resultMap>
+
+    <sql id="allField">
+        item_id,server_ip,updatetime
+    </sql>
+
+    <insert id="save" useGeneratedKeys="false" keyProperty="itemId" parameterType="smart.mall.domain.SysMasterServerDO">
+        insert into sys_master_server
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="itemId != null" >
+                item_id, 
+            </if>
+            <if test="serverIp != null" >
+                server_ip, 
+            </if>
+            <if test="updatetime != null" >
+                updatetime, 
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="itemId != null" >
+                #{itemId}, 
+            </if>
+            <if test="serverIp != null" >
+                #{serverIp}, 
+            </if>
+            <if test="updatetime != null" >
+                #{updatetime}, 
+            </if>
+        </trim>
+    </insert>
+
+    <update id="update" parameterType="smart.mall.domain.SysMasterServerDO">
+        update sys_master_server
+        <set>
+            <if test="serverIp != null" >
+                server_ip = #{serverIp}, 
+            </if>
+            <if test="updatetime != null" >
+                updatetime = #{updatetime}, 
+            </if>
+        </set>
+        where item_id = #{itemId}
+    </update>
+
+    <update id="updateByExample">
+        update sys_master_server
+        <set>
+            <if test="update.serverIp != null" >
+                server_ip = #{update.serverIp}, 
+            </if>
+            <if test="update.updatetime != null" >
+                updatetime = #{update.updatetime}, 
+            </if>
+        </set>
+        where 1 = 1 
+        <if test="example.itemId != null" >
+            and item_id = #{example.itemId} 
+        </if>
+        <if test="example.serverIp != null" >
+            and server_ip = #{example.serverIp} 
+        </if>
+        <if test="example.updatetime != null" >
+            and updatetime = #{example.updatetime} 
+        </if>
+    </update>
+
+    <delete id="delete">
+        delete from sys_master_server
+        where item_id = #{key}
+    </delete>
+
+    <delete id="deleteByKey">
+        delete from sys_master_server
+        where item_id = #{delete.itemId}
+    </delete>
+
+    <delete id="deleteByExample"> 
+        delete from sys_master_server
+        where 1 = 1 
+        <if test="example.itemId != null" >
+            and item_id = #{example.itemId} 
+        </if>
+        <if test="example.serverIp != null" >
+            and server_ip = #{example.serverIp} 
+        </if>
+        <if test="example.updatetime != null" >
+            and updatetime = #{example.updatetime} 
+        </if>
+    </delete>
+
+    <select id="countByExample" resultType="java.lang.Integer"> 
+        select count(*) from sys_master_server where 1 = 1 
+        <if test="example.itemId != null" >
+            and item_id = #{example.itemId} 
+        </if>
+        <if test="example.serverIp != null" >
+            and server_ip = #{example.serverIp} 
+        </if>
+        <if test="example.updatetime != null" >
+            and updatetime = #{example.updatetime} 
+        </if>
+    </select>
+
+    <select id="listByExample"  resultMap="sysMasterServerMap">
+        select <include refid="allField" />
+        from sys_master_server where 1 = 1 
+        <if test="example.itemId != null" >
+            and item_id = #{example.itemId} 
+        </if>
+        <if test="example.serverIp != null" >
+            and server_ip = #{example.serverIp} 
+        </if>
+        <if test="example.updatetime != null" >
+            and updatetime = #{example.updatetime} 
+        </if>
+        <if test="orderBy != null" >
+            order by ${orderBy} 
+        </if>
+        limit ${pageSize} offset ${(page - 1) * pageSize}
+    </select>
+
+    <select id="getByKey" resultMap="sysMasterServerMap">
+        select <include refid="allField"/>
+        from sys_master_server where item_id = #{key}
+    </select>
+
+
+</mapper>
+

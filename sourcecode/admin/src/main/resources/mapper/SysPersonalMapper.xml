@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="smart.mall.dao.SysPersonalDao">
+
+    <resultMap id="sysPersonalMap" type="smart.mall.domain.SysPersonalDO">
+        <id column="user_no" property="userNo"/>
+        <result column="head_img" property="headImg"/>
+        <result column="birthday" property="birthday"/>
+        <result column="phone_bak" property="phoneBak"/>
+        <result column="email" property="email"/>
+        <result column="specialty" property="specialty"/>
+        <result column="wechat" property="wechat"/>
+        <result column="open_wx" property="openWx"/>
+        <result column="address" property="address"/>
+        <result column="open_addr" property="openAddr"/>
+        <result column="car_id" property="carId"/>
+        <result column="open_car_id" property="openCarId"/>
+        <result column="parent_addr" property="parentAddr"/>
+        <result column="open_par_addr" property="openParAddr"/>
+        <result column="life_photo_1" property="lifePhoto1"/>
+        <result column="life_photo_2" property="lifePhoto2"/>
+        <result column="life_photo_3" property="lifePhoto3"/>
+        <result column="created_on" property="createdOn"/>
+        <result column="created_by" property="createdBy"/>
+        <result column="modified_on" property="modifiedOn"/>
+        <result column="modified_by" property="modifiedBy"/>
+    </resultMap>
+
+    <sql id="allField">
+        user_no,head_img,birthday,phone_bak,email,specialty,wechat,open_wx,address,open_addr,car_id,open_car_id,parent_addr,open_par_addr,life_photo_1,life_photo_2,life_photo_3,created_on,created_by,modified_on,modified_by
+    </sql>
+
+    <insert id="save" useGeneratedKeys="false" keyProperty="userNo" parameterType="smart.mall.domain.SysPersonalDO">
+        insert into sys_personal
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userNo != null and userNo != ''" >
+                user_no, 
+            </if>
+            <if test="headImg != null and headImg != ''" >
+                head_img, 
+            </if>
+            <if test="birthday != null" >
+                birthday, 
+            </if>
+            <if test="phoneBak != null and phoneBak != ''" >
+                phone_bak, 
+            </if>
+            <if test="email != null and email != ''" >
+                email, 
+            </if>
+            <if test="specialty != null and specialty != ''" >
+                specialty, 
+            </if>
+            <if test="wechat != null and wechat != ''" >
+                wechat, 
+            </if>
+            <if test="openWx != null" >
+                open_wx, 
+            </if>
+            <if test="address != null and address != ''" >
+                address, 
+            </if>
+            <if test="openAddr != null" >
+                open_addr, 
+            </if>
+            <if test="carId != null and carId != ''" >
+                car_id, 
+            </if>
+            <if test="openCarId != null" >
+                open_car_id, 
+            </if>
+            <if test="parentAddr != null and parentAddr != ''" >
+                parent_addr, 
+            </if>
+            <if test="openParAddr != null" >
+                open_par_addr, 
+            </if>
+            <if test="lifePhoto1 != null and lifePhoto1 != ''" >
+                life_photo_1, 
+            </if>
+            <if test="lifePhoto2 != null and lifePhoto2 != ''" >
+                life_photo_2, 
+            </if>
+            <if test="lifePhoto3 != null and lifePhoto3 != ''" >
+                life_photo_3, 
+            </if>
+            <if test="createdOn != null" >
+                created_on, 
+            </if>
+            <if test="createdBy != null and createdBy != ''" >
+                created_by, 
+            </if>
+            <if test="modifiedOn != null" >
+                modified_on, 
+            </if>
+            <if test="modifiedBy != null and modifiedBy != ''" >
+                modified_by, 
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userNo != null and userNo != ''" >
+                #{userNo}, 
+            </if>
+            <if test="headImg != null and headImg != ''" >
+                #{headImg}, 
+            </if>
+            <if test="birthday != null" >
+                #{birthday}, 
+            </if>
+            <if test="phoneBak != null and phoneBak != ''" >
+                #{phoneBak}, 
+            </if>
+            <if test="email != null and email != ''" >
+                #{email}, 
+            </if>
+            <if test="specialty != null and specialty != ''" >
+                #{specialty}, 
+            </if>
+            <if test="wechat != null and wechat != ''" >
+                #{wechat}, 
+            </if>
+            <if test="openWx != null" >
+                #{openWx}, 
+            </if>
+            <if test="address != null and address != ''" >
+                #{address}, 
+            </if>
+            <if test="openAddr != null" >
+                #{openAddr}, 
+            </if>
+            <if test="carId != null and carId != ''" >
+                #{carId}, 
+            </if>
+            <if test="openCarId != null" >
+                #{openCarId}, 
+            </if>
+            <if test="parentAddr != null and parentAddr != ''" >
+                #{parentAddr}, 
+            </if>
+            <if test="openParAddr != null" >
+                #{openParAddr}, 
+            </if>
+            <if test="lifePhoto1 != null and lifePhoto1 != ''" >
+                #{lifePhoto1}, 
+            </if>
+            <if test="lifePhoto2 != null and lifePhoto2 != ''" >
+                #{lifePhoto2}, 
+            </if>
+            <if test="lifePhoto3 != null and lifePhoto3 != ''" >
+                #{lifePhoto3}, 
+            </if>
+            <if test="createdOn != null" >
+                #{createdOn}, 
+            </if>
+            <if test="createdBy != null and createdBy != ''" >
+                #{createdBy}, 
+            </if>
+            <if test="modifiedOn != null" >
+                #{modifiedOn}, 
+            </if>
+            <if test="modifiedBy != null and modifiedBy != ''" >
+                #{modifiedBy}, 
+            </if>
+        </trim>
+    </insert>
+
+    <update id="update" parameterType="smart.mall.domain.SysPersonalDO">
+        update sys_personal
+        <set>
+            <if test="headImg != null" >
+                head_img = #{headImg}, 
+            </if>
+            <if test="birthday != null" >
+                birthday = #{birthday}, 
+            </if>
+            <if test="phoneBak != null" >
+                phone_bak = #{phoneBak}, 
+            </if>
+            <if test="email != null" >
+                email = #{email}, 
+            </if>
+            <if test="specialty != null" >
+                specialty = #{specialty}, 
+            </if>
+            <if test="wechat != null" >
+                wechat = #{wechat}, 
+            </if>
+            <if test="openWx != null" >
+                open_wx = #{openWx}, 
+            </if>
+            <if test="address != null" >
+                address = #{address}, 
+            </if>
+            <if test="openAddr != null" >
+                open_addr = #{openAddr}, 
+            </if>
+            <if test="carId != null" >
+                car_id = #{carId}, 
+            </if>
+            <if test="openCarId != null" >
+                open_car_id = #{openCarId}, 
+            </if>
+            <if test="parentAddr != null" >
+                parent_addr = #{parentAddr}, 
+            </if>
+            <if test="openParAddr != null" >
+                open_par_addr = #{openParAddr}, 
+            </if>
+            <if test="lifePhoto1 != null" >
+                life_photo_1 = #{lifePhoto1}, 
+            </if>
+            <if test="lifePhoto2 != null" >
+                life_photo_2 = #{lifePhoto2}, 
+            </if>
+            <if test="lifePhoto3 != null" >
+                life_photo_3 = #{lifePhoto3}, 
+            </if>
+            <if test="createdOn != null" >
+                created_on = #{createdOn}, 
+            </if>
+            <if test="createdBy != null" >
+                created_by = #{createdBy}, 
+            </if>
+            <if test="modifiedOn != null" >
+                modified_on = #{modifiedOn}, 
+            </if>
+            <if test="modifiedBy != null" >
+                modified_by = #{modifiedBy}, 
+            </if>
+        </set>
+        where user_no = #{userNo}
+    </update>
+
+    <update id="updateByExample">
+        update sys_personal
+        <set>
+            <if test="update.headImg != null" >
+                head_img = #{update.headImg}, 
+            </if>
+            <if test="update.birthday != null" >
+                birthday = #{update.birthday}, 
+            </if>
+            <if test="update.phoneBak != null" >
+                phone_bak = #{update.phoneBak}, 
+            </if>
+            <if test="update.email != null" >
+                email = #{update.email}, 
+            </if>
+            <if test="update.specialty != null" >
+                specialty = #{update.specialty}, 
+            </if>
+            <if test="update.wechat != null" >
+                wechat = #{update.wechat}, 
+            </if>
+            <if test="update.openWx != null" >
+                open_wx = #{update.openWx}, 
+            </if>
+            <if test="update.address != null" >
+                address = #{update.address}, 
+            </if>
+            <if test="update.openAddr != null" >
+                open_addr = #{update.openAddr}, 
+            </if>
+            <if test="update.carId != null" >
+                car_id = #{update.carId}, 
+            </if>
+            <if test="update.openCarId != null" >
+                open_car_id = #{update.openCarId}, 
+            </if>
+            <if test="update.parentAddr != null" >
+                parent_addr = #{update.parentAddr}, 
+            </if>
+            <if test="update.openParAddr != null" >
+                open_par_addr = #{update.openParAddr}, 
+            </if>
+            <if test="update.lifePhoto1 != null" >
+                life_photo_1 = #{update.lifePhoto1}, 
+            </if>
+            <if test="update.lifePhoto2 != null" >
+                life_photo_2 = #{update.lifePhoto2}, 
+            </if>
+            <if test="update.lifePhoto3 != null" >
+                life_photo_3 = #{update.lifePhoto3}, 
+            </if>
+            <if test="update.createdOn != null" >
+                created_on = #{update.createdOn}, 
+            </if>
+            <if test="update.createdBy != null" >
+                created_by = #{update.createdBy}, 
+            </if>
+            <if test="update.modifiedOn != null" >
+                modified_on = #{update.modifiedOn}, 
+            </if>
+            <if test="update.modifiedBy != null" >
+                modified_by = #{update.modifiedBy}, 
+            </if>
+        </set>
+        where 1 = 1 
+        <if test="example.userNo != null" >
+            and user_no = #{example.userNo} 
+        </if>
+        <if test="example.headImg != null" >
+            and head_img = #{example.headImg} 
+        </if>
+        <if test="example.birthday != null" >
+            and birthday = #{example.birthday} 
+        </if>
+        <if test="example.phoneBak != null" >
+            and phone_bak = #{example.phoneBak} 
+        </if>
+        <if test="example.email != null" >
+            and email = #{example.email} 
+        </if>
+        <if test="example.specialty != null" >
+            and specialty = #{example.specialty} 
+        </if>
+        <if test="example.wechat != null" >
+            and wechat = #{example.wechat} 
+        </if>
+        <if test="example.openWx != null" >
+            and open_wx = #{example.openWx} 
+        </if>
+        <if test="example.address != null" >
+            and address = #{example.address} 
+        </if>
+        <if test="example.openAddr != null" >
+            and open_addr = #{example.openAddr} 
+        </if>
+        <if test="example.carId != null" >
+            and car_id = #{example.carId} 
+        </if>
+        <if test="example.openCarId != null" >
+            and open_car_id = #{example.openCarId} 
+        </if>
+        <if test="example.parentAddr != null" >
+            and parent_addr = #{example.parentAddr} 
+        </if>
+        <if test="example.openParAddr != null" >
+            and open_par_addr = #{example.openParAddr} 
+        </if>
+        <if test="example.lifePhoto1 != null" >
+            and life_photo_1 = #{example.lifePhoto1} 
+        </if>
+        <if test="example.lifePhoto2 != null" >
+            and life_photo_2 = #{example.lifePhoto2} 
+        </if>
+        <if test="example.lifePhoto3 != null" >
+            and life_photo_3 = #{example.lifePhoto3} 
+        </if>
+        <if test="example.createdOn != null" >
+            and created_on = #{example.createdOn} 
+        </if>
+        <if test="example.createdBy != null" >
+            and created_by = #{example.createdBy} 
+        </if>
+        <if test="example.modifiedOn != null" >
+            and modified_on = #{example.modifiedOn} 
+        </if>
+        <if test="example.modifiedBy != null" >
+            and modified_by = #{example.modifiedBy} 
+        </if>
+    </update>
+
+    <delete id="delete">
+        delete from sys_personal
+        where user_no = #{key}
+    </delete>
+
+    <delete id="deleteByKey">
+        delete from sys_personal
+        where user_no = #{delete.userNo}
+    </delete>
+
+    <delete id="deleteByExample"> 
+        delete from sys_personal
+        where 1 = 1 
+        <if test="example.userNo != null" >
+            and user_no = #{example.userNo} 
+        </if>
+        <if test="example.headImg != null" >
+            and head_img = #{example.headImg} 
+        </if>
+        <if test="example.birthday != null" >
+            and birthday = #{example.birthday} 
+        </if>
+        <if test="example.phoneBak != null" >
+            and phone_bak = #{example.phoneBak} 
+        </if>
+        <if test="example.email != null" >
+            and email = #{example.email} 
+        </if>
+        <if test="example.specialty != null" >
+            and specialty = #{example.specialty} 
+        </if>
+        <if test="example.wechat != null" >
+            and wechat = #{example.wechat} 
+        </if>
+        <if test="example.openWx != null" >
+            and open_wx = #{example.openWx} 
+        </if>
+        <if test="example.address != null" >
+            and address = #{example.address} 
+        </if>
+        <if test="example.openAddr != null" >
+            and open_addr = #{example.openAddr} 
+        </if>
+        <if test="example.carId != null" >
+            and car_id = #{example.carId} 
+        </if>
+        <if test="example.openCarId != null" >
+            and open_car_id = #{example.openCarId} 
+        </if>
+        <if test="example.parentAddr != null" >
+            and parent_addr = #{example.parentAddr} 
+        </if>
+        <if test="example.openParAddr != null" >
+            and open_par_addr = #{example.openParAddr} 
+        </if>
+        <if test="example.lifePhoto1 != null" >
+            and life_photo_1 = #{example.lifePhoto1} 
+        </if>
+        <if test="example.lifePhoto2 != null" >
+            and life_photo_2 = #{example.lifePhoto2} 
+        </if>
+        <if test="example.lifePhoto3 != null" >
+            and life_photo_3 = #{example.lifePhoto3} 
+        </if>
+        <if test="example.createdOn != null" >
+            and created_on = #{example.createdOn} 
+        </if>
+        <if test="example.createdBy != null" >
+            and created_by = #{example.createdBy} 
+        </if>
+        <if test="example.modifiedOn != null" >
+            and modified_on = #{example.modifiedOn} 
+        </if>
+        <if test="example.modifiedBy != null" >
+            and modified_by = #{example.modifiedBy} 
+        </if>
+    </delete>
+
+    <select id="countByExample" resultType="java.lang.Integer"> 
+        select count(*) from sys_personal where 1 = 1 
+        <if test="example.userNo != null and example.userNo != ''" >
+            and user_no = #{example.userNo} 
+        </if>
+        <if test="example.headImg != null and example.headImg != ''" >
+            and head_img = #{example.headImg} 
+        </if>
+        <if test="example.birthday != null" >
+            and birthday = #{example.birthday} 
+        </if>
+        <if test="example.phoneBak != null and example.phoneBak != ''" >
+            and phone_bak = #{example.phoneBak} 
+        </if>
+        <if test="example.email != null and example.email != ''" >
+            and email = #{example.email} 
+        </if>
+        <if test="example.specialty != null and example.specialty != ''" >
+            and specialty = #{example.specialty} 
+        </if>
+        <if test="example.wechat != null and example.wechat != ''" >
+            and wechat = #{example.wechat} 
+        </if>
+        <if test="example.openWx != null" >
+            and open_wx = #{example.openWx} 
+        </if>
+        <if test="example.address != null and example.address != ''" >
+            and address = #{example.address} 
+        </if>
+        <if test="example.openAddr != null" >
+            and open_addr = #{example.openAddr} 
+        </if>
+        <if test="example.carId != null and example.carId != ''" >
+            and car_id = #{example.carId} 
+        </if>
+        <if test="example.openCarId != null" >
+            and open_car_id = #{example.openCarId} 
+        </if>
+        <if test="example.parentAddr != null and example.parentAddr != ''" >
+            and parent_addr = #{example.parentAddr} 
+        </if>
+        <if test="example.openParAddr != null" >
+            and open_par_addr = #{example.openParAddr} 
+        </if>
+        <if test="example.lifePhoto1 != null and example.lifePhoto1 != ''" >
+            and life_photo_1 = #{example.lifePhoto1} 
+        </if>
+        <if test="example.lifePhoto2 != null and example.lifePhoto2 != ''" >
+            and life_photo_2 = #{example.lifePhoto2} 
+        </if>
+        <if test="example.lifePhoto3 != null and example.lifePhoto3 != ''" >
+            and life_photo_3 = #{example.lifePhoto3} 
+        </if>
+        <if test="example.createdOn != null" >
+            and created_on = #{example.createdOn} 
+        </if>
+        <if test="example.createdBy != null and example.createdBy != ''" >
+            and created_by = #{example.createdBy} 
+        </if>
+        <if test="example.modifiedOn != null" >
+            and modified_on = #{example.modifiedOn} 
+        </if>
+        <if test="example.modifiedBy != null and example.modifiedBy != ''" >
+            and modified_by = #{example.modifiedBy} 
+        </if>
+    </select>
+
+    <select id="listByExample"  resultMap="sysPersonalMap">
+        select <include refid="allField" />
+        from sys_personal where 1 = 1 
+        <if test="example.userNo != null and example.userNo != ''" >
+            and user_no = #{example.userNo} 
+        </if>
+        <if test="example.headImg != null and example.headImg != ''" >
+            and head_img = #{example.headImg} 
+        </if>
+        <if test="example.birthday != null" >
+            and birthday = #{example.birthday} 
+        </if>
+        <if test="example.phoneBak != null and example.phoneBak != ''" >
+            and phone_bak = #{example.phoneBak} 
+        </if>
+        <if test="example.email != null and example.email != ''" >
+            and email = #{example.email} 
+        </if>
+        <if test="example.specialty != null and example.specialty != ''" >
+            and specialty = #{example.specialty} 
+        </if>
+        <if test="example.wechat != null and example.wechat != ''" >
+            and wechat = #{example.wechat} 
+        </if>
+        <if test="example.openWx != null" >
+            and open_wx = #{example.openWx} 
+        </if>
+        <if test="example.address != null and example.address != ''" >
+            and address = #{example.address} 
+        </if>
+        <if test="example.openAddr != null" >
+            and open_addr = #{example.openAddr} 
+        </if>
+        <if test="example.carId != null and example.carId != ''" >
+            and car_id = #{example.carId} 
+        </if>
+        <if test="example.openCarId != null" >
+            and open_car_id = #{example.openCarId} 
+        </if>
+        <if test="example.parentAddr != null and example.parentAddr != ''" >
+            and parent_addr = #{example.parentAddr} 
+        </if>
+        <if test="example.openParAddr != null" >
+            and open_par_addr = #{example.openParAddr} 
+        </if>
+        <if test="example.lifePhoto1 != null and example.lifePhoto1 != ''" >
+            and life_photo_1 = #{example.lifePhoto1} 
+        </if>
+        <if test="example.lifePhoto2 != null and example.lifePhoto2 != ''" >
+            and life_photo_2 = #{example.lifePhoto2} 
+        </if>
+        <if test="example.lifePhoto3 != null and example.lifePhoto3 != ''" >
+            and life_photo_3 = #{example.lifePhoto3} 
+        </if>
+        <if test="example.createdOn != null" >
+            and created_on = #{example.createdOn} 
+        </if>
+        <if test="example.createdBy != null and example.createdBy != ''" >
+            and created_by = #{example.createdBy} 
+        </if>
+        <if test="example.modifiedOn != null" >
+            and modified_on = #{example.modifiedOn} 
+        </if>
+        <if test="example.modifiedBy != null and example.modifiedBy != ''" >
+            and modified_by = #{example.modifiedBy} 
+        </if>
+        <if test="orderBy != null" >
+            order by ${orderBy} 
+        </if>
+        limit ${pageSize} offset ${(page - 1) * pageSize}
+    </select>
+
+    <select id="getByKey" resultMap="sysPersonalMap">
+        select <include refid="allField"/>
+        from sys_personal where user_no = #{key}
+    </select>
+
+
+</mapper>
+

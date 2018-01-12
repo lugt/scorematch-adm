@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="smart.mall.dao.SysResourceDao">
+
+    <resultMap id="sysResourceMap" type="smart.mall.domain.SysResourceDO">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="code" property="code"/>
+        <result column="res_type" property="resType"/>
+        <result column="url" property="url"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="is_show" property="isShow"/>
+        <result column="menu_order" property="menuOrder"/>
+        <result column="created_on" property="createdOn"/>
+        <result column="created_by" property="createdBy"/>
+        <result column="modified_on" property="modifiedOn"/>
+        <result column="modified_by" property="modifiedBy"/>
+    </resultMap>
+
+    <sql id="allField">
+        id,name,code,res_type,url,parent_id,is_show,menu_order,created_on,created_by,modified_on,modified_by
+    </sql>
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="smart.mall.domain.SysResourceDO">
+        insert into sys_resource
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null and name != ''" >
+                name, 
+            </if>
+            <if test="code != null and code != ''" >
+                code, 
+            </if>
+            <if test="resType != null and resType != ''" >
+                res_type, 
+            </if>
+            <if test="url != null and url != ''" >
+                url, 
+            </if>
+            <if test="parentId != null" >
+                parent_id, 
+            </if>
+            <if test="isShow != null" >
+                is_show, 
+            </if>
+            <if test="menuOrder != null" >
+                menu_order, 
+            </if>
+            <if test="createdOn != null" >
+                created_on, 
+            </if>
+            <if test="createdBy != null and createdBy != ''" >
+                created_by, 
+            </if>
+            <if test="modifiedOn != null" >
+                modified_on, 
+            </if>
+            <if test="modifiedBy != null and modifiedBy != ''" >
+                modified_by, 
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null and name != ''" >
+                #{name}, 
+            </if>
+            <if test="code != null and code != ''" >
+                #{code}, 
+            </if>
+            <if test="resType != null and resType != ''" >
+                #{resType}, 
+            </if>
+            <if test="url != null and url != ''" >
+                #{url}, 
+            </if>
+            <if test="parentId != null" >
+                #{parentId}, 
+            </if>
+            <if test="isShow != null" >
+                #{isShow}, 
+            </if>
+            <if test="menuOrder != null" >
+                #{menuOrder}, 
+            </if>
+            <if test="createdOn != null" >
+                #{createdOn}, 
+            </if>
+            <if test="createdBy != null and createdBy != ''" >
+                #{createdBy}, 
+            </if>
+            <if test="modifiedOn != null" >
+                #{modifiedOn}, 
+            </if>
+            <if test="modifiedBy != null and modifiedBy != ''" >
+                #{modifiedBy}, 
+            </if>
+        </trim>
+    </insert>
+
+    <update id="update" parameterType="smart.mall.domain.SysResourceDO">
+        update sys_resource
+        <set>
+            <if test="name != null" >
+                name = #{name}, 
+            </if>
+            <if test="code != null" >
+                code = #{code}, 
+            </if>
+            <if test="resType != null" >
+                res_type = #{resType}, 
+            </if>
+            <if test="url != null" >
+                url = #{url}, 
+            </if>
+            <if test="parentId != null" >
+                parent_id = #{parentId}, 
+            </if>
+            <if test="isShow != null" >
+                is_show = #{isShow}, 
+            </if>
+            <if test="menuOrder != null" >
+                menu_order = #{menuOrder}, 
+            </if>
+            <if test="createdOn != null" >
+                created_on = #{createdOn}, 
+            </if>
+            <if test="createdBy != null" >
+                created_by = #{createdBy}, 
+            </if>
+            <if test="modifiedOn != null" >
+                modified_on = #{modifiedOn}, 
+            </if>
+            <if test="modifiedBy != null" >
+                modified_by = #{modifiedBy}, 
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <update id="updateByExample">
+        update sys_resource
+        <set>
+            <if test="update.name != null" >
+                name = #{update.name}, 
+            </if>
+            <if test="update.code != null" >
+                code = #{update.code}, 
+            </if>
+            <if test="update.resType != null" >
+                res_type = #{update.resType}, 
+            </if>
+            <if test="update.url != null" >
+                url = #{update.url}, 
+            </if>
+            <if test="update.parentId != null" >
+                parent_id = #{update.parentId}, 
+            </if>
+            <if test="update.isShow != null" >
+                is_show = #{update.isShow}, 
+            </if>
+            <if test="update.menuOrder != null" >
+                menu_order = #{update.menuOrder}, 
+            </if>
+            <if test="update.createdOn != null" >
+                created_on = #{update.createdOn}, 
+            </if>
+            <if test="update.createdBy != null" >
+                created_by = #{update.createdBy}, 
+            </if>
+            <if test="update.modifiedOn != null" >
+                modified_on = #{update.modifiedOn}, 
+            </if>
+            <if test="update.modifiedBy != null" >
+                modified_by = #{update.modifiedBy}, 
+            </if>
+        </set>
+        where 1 = 1 
+        <if test="example.id != null" >
+            and id = #{example.id} 
+        </if>
+        <if test="example.name != null" >
+            and name = #{example.name} 
+        </if>
+        <if test="example.code != null" >
+            and code = #{example.code} 
+        </if>
+        <if test="example.resType != null" >
+            and res_type = #{example.resType} 
+        </if>
+        <if test="example.url != null" >
+            and url = #{example.url} 
+        </if>
+        <if test="example.parentId != null" >
+            and parent_id = #{example.parentId} 
+        </if>
+        <if test="example.isShow != null" >
+            and is_show = #{example.isShow} 
+        </if>
+        <if test="example.menuOrder != null" >
+            and menu_order = #{example.menuOrder} 
+        </if>
+        <if test="example.createdOn != null" >
+            and created_on = #{example.createdOn} 
+        </if>
+        <if test="example.createdBy != null" >
+            and created_by = #{example.createdBy} 
+        </if>
+        <if test="example.modifiedOn != null" >
+            and modified_on = #{example.modifiedOn} 
+        </if>
+        <if test="example.modifiedBy != null" >
+            and modified_by = #{example.modifiedBy} 
+        </if>
+    </update>
+
+    <delete id="delete">
+        delete from sys_resource
+        where id = #{key}
+    </delete>
+
+    <delete id="deleteByKey">
+        delete from sys_resource
+        where id = #{delete.id}
+    </delete>
+
+    <delete id="deleteByExample"> 
+        delete from sys_resource
+        where 1 = 1 
+        <if test="example.id != null" >
+            and id = #{example.id} 
+        </if>
+        <if test="example.name != null" >
+            and name = #{example.name} 
+        </if>
+        <if test="example.code != null" >
+            and code = #{example.code} 
+        </if>
+        <if test="example.resType != null" >
+            and res_type = #{example.resType} 
+        </if>
+        <if test="example.url != null" >
+            and url = #{example.url} 
+        </if>
+        <if test="example.parentId != null" >
+            and parent_id = #{example.parentId} 
+        </if>
+        <if test="example.isShow != null" >
+            and is_show = #{example.isShow} 
+        </if>
+        <if test="example.menuOrder != null" >
+            and menu_order = #{example.menuOrder} 
+        </if>
+        <if test="example.createdOn != null" >
+            and created_on = #{example.createdOn} 
+        </if>
+        <if test="example.createdBy != null" >
+            and created_by = #{example.createdBy} 
+        </if>
+        <if test="example.modifiedOn != null" >
+            and modified_on = #{example.modifiedOn} 
+        </if>
+        <if test="example.modifiedBy != null" >
+            and modified_by = #{example.modifiedBy} 
+        </if>
+    </delete>
+
+    <select id="countByExample" resultType="java.lang.Integer"> 
+        select count(*) from sys_resource where 1 = 1 
+        <if test="example.id != null" >
+            and id = #{example.id} 
+        </if>
+        <if test="example.name != null and example.name != ''" >
+            and name = #{example.name} 
+        </if>
+        <if test="example.code != null and example.code != ''" >
+            and code = #{example.code} 
+        </if>
+        <if test="example.resType != null and example.resType != ''" >
+            and res_type = #{example.resType} 
+        </if>
+        <if test="example.url != null and example.url != ''" >
+            and url = #{example.url} 
+        </if>
+        <if test="example.parentId != null" >
+            and parent_id = #{example.parentId} 
+        </if>
+        <if test="example.isShow != null" >
+            and is_show = #{example.isShow} 
+        </if>
+        <if test="example.menuOrder != null" >
+            and menu_order = #{example.menuOrder} 
+        </if>
+        <if test="example.createdOn != null" >
+            and created_on = #{example.createdOn} 
+        </if>
+        <if test="example.createdBy != null and example.createdBy != ''" >
+            and created_by = #{example.createdBy} 
+        </if>
+        <if test="example.modifiedOn != null" >
+            and modified_on = #{example.modifiedOn} 
+        </if>
+        <if test="example.modifiedBy != null and example.modifiedBy != ''" >
+            and modified_by = #{example.modifiedBy} 
+        </if>
+    </select>
+
+    <select id="listByExample"  resultMap="sysResourceMap">
+        select <include refid="allField" />
+        from sys_resource where 1 = 1 
+        <if test="example.id != null" >
+            and id = #{example.id} 
+        </if>
+        <if test="example.name != null and example.name != ''" >
+            and name = #{example.name} 
+        </if>
+        <if test="example.code != null and example.code != ''" >
+            and code = #{example.code} 
+        </if>
+        <if test="example.resType != null and example.resType != ''" >
+            and res_type = #{example.resType} 
+        </if>
+        <if test="example.url != null and example.url != ''" >
+            and url = #{example.url} 
+        </if>
+        <if test="example.parentId != null" >
+            and parent_id = #{example.parentId} 
+        </if>
+        <if test="example.isShow != null" >
+            and is_show = #{example.isShow} 
+        </if>
+        <if test="example.menuOrder != null" >
+            and menu_order = #{example.menuOrder} 
+        </if>
+        <if test="example.createdOn != null" >
+            and created_on = #{example.createdOn} 
+        </if>
+        <if test="example.createdBy != null and example.createdBy != ''" >
+            and created_by = #{example.createdBy} 
+        </if>
+        <if test="example.modifiedOn != null" >
+            and modified_on = #{example.modifiedOn} 
+        </if>
+        <if test="example.modifiedBy != null and example.modifiedBy != ''" >
+            and modified_by = #{example.modifiedBy} 
+        </if>
+        <if test="orderBy != null" >
+            order by ${orderBy} 
+        </if>
+        limit ${pageSize} offset ${(page - 1) * pageSize}
+    </select>
+
+    <select id="getByKey" resultMap="sysResourceMap">
+        select <include refid="allField"/>
+        from sys_resource where id = #{key}
+    </select>
+
+
+</mapper>
+

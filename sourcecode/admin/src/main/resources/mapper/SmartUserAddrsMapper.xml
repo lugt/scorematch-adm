@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="smart.mall.dao.SmartUserAddrsDao"> 
+
+    <resultMap id="smartUserAddrsMap" type="smart.mall.domain.SmartUserAddrsDO">
+        <id column="uid" property="uid"/>
+        <result column="addr1" property="addr1"/>
+        <result column="addr2" property="addr2"/>
+        <result column="addr3" property="addr3"/>
+        <result column="addr4" property="addr4"/>
+        <result column="addr5" property="addr5"/>
+        <result column="addr6" property="addr6"/>
+        <result column="addr7" property="addr7"/>
+        <result column="addr8" property="addr8"/>
+        <result column="addr9" property="addr9"/>
+        <result column="defaultaddr" property="defaultaddr"/>
+    </resultMap>
+
+    <sql id="allField">
+        uid,addr1,addr2,addr3,addr4,addr5,addr6,addr7,addr8,addr9,defaultaddr
+    </sql>
+
+    <insert id="save" useGeneratedKeys="false" keyProperty="uid" parameterType="smart.mall.domain.SmartUserAddrsDO">
+        insert into smart_user_addrs
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="uid != null" >
+                uid, 
+            </if>
+            <if test="addr1 != null" >
+                addr1, 
+            </if>
+            <if test="addr2 != null" >
+                addr2, 
+            </if>
+            <if test="addr3 != null" >
+                addr3, 
+            </if>
+            <if test="addr4 != null" >
+                addr4, 
+            </if>
+            <if test="addr5 != null" >
+                addr5, 
+            </if>
+            <if test="addr6 != null" >
+                addr6, 
+            </if>
+            <if test="addr7 != null" >
+                addr7, 
+            </if>
+            <if test="addr8 != null" >
+                addr8, 
+            </if>
+            <if test="addr9 != null" >
+                addr9, 
+            </if>
+            <if test="defaultaddr != null" >
+                defaultaddr, 
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="uid != null" >
+                #{uid}, 
+            </if>
+            <if test="addr1 != null" >
+                #{addr1}, 
+            </if>
+            <if test="addr2 != null" >
+                #{addr2}, 
+            </if>
+            <if test="addr3 != null" >
+                #{addr3}, 
+            </if>
+            <if test="addr4 != null" >
+                #{addr4}, 
+            </if>
+            <if test="addr5 != null" >
+                #{addr5}, 
+            </if>
+            <if test="addr6 != null" >
+                #{addr6}, 
+            </if>
+            <if test="addr7 != null" >
+                #{addr7}, 
+            </if>
+            <if test="addr8 != null" >
+                #{addr8}, 
+            </if>
+            <if test="addr9 != null" >
+                #{addr9}, 
+            </if>
+            <if test="defaultaddr != null" >
+                #{defaultaddr}, 
+            </if>
+        </trim>
+    </insert>
+
+    <update id="update" parameterType="smart.mall.domain.SmartUserAddrsDO">
+        update smart_user_addrs
+        <set>
+            <if test="addr1 != null" >
+                addr1 = #{addr1}, 
+            </if>
+            <if test="addr2 != null" >
+                addr2 = #{addr2}, 
+            </if>
+            <if test="addr3 != null" >
+                addr3 = #{addr3}, 
+            </if>
+            <if test="addr4 != null" >
+                addr4 = #{addr4}, 
+            </if>
+            <if test="addr5 != null" >
+                addr5 = #{addr5}, 
+            </if>
+            <if test="addr6 != null" >
+                addr6 = #{addr6}, 
+            </if>
+            <if test="addr7 != null" >
+                addr7 = #{addr7}, 
+            </if>
+            <if test="addr8 != null" >
+                addr8 = #{addr8}, 
+            </if>
+            <if test="addr9 != null" >
+                addr9 = #{addr9}, 
+            </if>
+            <if test="defaultaddr != null" >
+                defaultaddr = #{defaultaddr}, 
+            </if>
+        </set>
+        where uid = #{uid}
+    </update>
+
+    <update id="updateByExample">
+        update smart_user_addrs
+        <set>
+            <if test="update.addr1 != null" >
+                addr1 = #{update.addr1}, 
+            </if>
+            <if test="update.addr2 != null" >
+                addr2 = #{update.addr2}, 
+            </if>
+            <if test="update.addr3 != null" >
+                addr3 = #{update.addr3}, 
+            </if>
+            <if test="update.addr4 != null" >
+                addr4 = #{update.addr4}, 
+            </if>
+            <if test="update.addr5 != null" >
+                addr5 = #{update.addr5}, 
+            </if>
+            <if test="update.addr6 != null" >
+                addr6 = #{update.addr6}, 
+            </if>
+            <if test="update.addr7 != null" >
+                addr7 = #{update.addr7}, 
+            </if>
+            <if test="update.addr8 != null" >
+                addr8 = #{update.addr8}, 
+            </if>
+            <if test="update.addr9 != null" >
+                addr9 = #{update.addr9}, 
+            </if>
+            <if test="update.defaultaddr != null" >
+                defaultaddr = #{update.defaultaddr}, 
+            </if>
+        </set>
+        where 1 = 1 
+        <if test="example.uid != null" >
+            and uid = #{example.uid} 
+        </if>
+        <if test="example.addr1 != null" >
+            and addr1 = #{example.addr1} 
+        </if>
+        <if test="example.addr2 != null" >
+            and addr2 = #{example.addr2} 
+        </if>
+        <if test="example.addr3 != null" >
+            and addr3 = #{example.addr3} 
+        </if>
+        <if test="example.addr4 != null" >
+            and addr4 = #{example.addr4} 
+        </if>
+        <if test="example.addr5 != null" >
+            and addr5 = #{example.addr5} 
+        </if>
+        <if test="example.addr6 != null" >
+            and addr6 = #{example.addr6} 
+        </if>
+        <if test="example.addr7 != null" >
+            and addr7 = #{example.addr7} 
+        </if>
+        <if test="example.addr8 != null" >
+            and addr8 = #{example.addr8} 
+        </if>
+        <if test="example.addr9 != null" >
+            and addr9 = #{example.addr9} 
+        </if>
+        <if test="example.defaultaddr != null" >
+            and defaultaddr = #{example.defaultaddr} 
+        </if>
+    </update>
+
+    <delete id="delete">
+        delete from smart_user_addrs
+        where uid = #{key}
+    </delete>
+
+    <delete id="deleteByKey">
+        delete from smart_user_addrs
+        where uid = #{delete.uid}
+    </delete>
+
+    <delete id="deleteByExample"> 
+        delete from smart_user_addrs
+        where 1 = 1 
+        <if test="example.uid != null" >
+            and uid = #{example.uid} 
+        </if>
+        <if test="example.addr1 != null" >
+            and addr1 = #{example.addr1} 
+        </if>
+        <if test="example.addr2 != null" >
+            and addr2 = #{example.addr2} 
+        </if>
+        <if test="example.addr3 != null" >
+            and addr3 = #{example.addr3} 
+        </if>
+        <if test="example.addr4 != null" >
+            and addr4 = #{example.addr4} 
+        </if>
+        <if test="example.addr5 != null" >
+            and addr5 = #{example.addr5} 
+        </if>
+        <if test="example.addr6 != null" >
+            and addr6 = #{example.addr6} 
+        </if>
+        <if test="example.addr7 != null" >
+            and addr7 = #{example.addr7} 
+        </if>
+        <if test="example.addr8 != null" >
+            and addr8 = #{example.addr8} 
+        </if>
+        <if test="example.addr9 != null" >
+            and addr9 = #{example.addr9} 
+        </if>
+        <if test="example.defaultaddr != null" >
+            and defaultaddr = #{example.defaultaddr} 
+        </if>
+    </delete>
+
+    <select id="countByExample" resultType="java.lang.Integer"> 
+        select count(*) from smart_user_addrs where 1 = 1 
+        <if test="example.uid != null" >
+            and uid = #{example.uid} 
+        </if>
+        <if test="example.addr1 != null" >
+            and addr1 = #{example.addr1} 
+        </if>
+        <if test="example.addr2 != null" >
+            and addr2 = #{example.addr2} 
+        </if>
+        <if test="example.addr3 != null" >
+            and addr3 = #{example.addr3} 
+        </if>
+        <if test="example.addr4 != null" >
+            and addr4 = #{example.addr4} 
+        </if>
+        <if test="example.addr5 != null" >
+            and addr5 = #{example.addr5} 
+        </if>
+        <if test="example.addr6 != null" >
+            and addr6 = #{example.addr6} 
+        </if>
+        <if test="example.addr7 != null" >
+            and addr7 = #{example.addr7} 
+        </if>
+        <if test="example.addr8 != null" >
+            and addr8 = #{example.addr8} 
+        </if>
+        <if test="example.addr9 != null" >
+            and addr9 = #{example.addr9} 
+        </if>
+        <if test="example.defaultaddr != null" >
+            and defaultaddr = #{example.defaultaddr} 
+        </if>
+    </select>
+
+    <select id="listByExample"  resultMap="smartUserAddrsMap">
+        select <include refid="allField" />
+        from smart_user_addrs where 1 = 1 
+        <if test="example.uid != null" >
+            and uid = #{example.uid} 
+        </if>
+        <if test="example.addr1 != null" >
+            and addr1 = #{example.addr1} 
+        </if>
+        <if test="example.addr2 != null" >
+            and addr2 = #{example.addr2} 
+        </if>
+        <if test="example.addr3 != null" >
+            and addr3 = #{example.addr3} 
+        </if>
+        <if test="example.addr4 != null" >
+            and addr4 = #{example.addr4} 
+        </if>
+        <if test="example.addr5 != null" >
+            and addr5 = #{example.addr5} 
+        </if>
+        <if test="example.addr6 != null" >
+            and addr6 = #{example.addr6} 
+        </if>
+        <if test="example.addr7 != null" >
+            and addr7 = #{example.addr7} 
+        </if>
+        <if test="example.addr8 != null" >
+            and addr8 = #{example.addr8} 
+        </if>
+        <if test="example.addr9 != null" >
+            and addr9 = #{example.addr9} 
+        </if>
+        <if test="example.defaultaddr != null" >
+            and defaultaddr = #{example.defaultaddr} 
+        </if>
+        <if test="orderBy != null" >
+            order by ${orderBy} 
+        </if>
+        limit ${pageSize} offset ${(page - 1) * pageSize}
+    </select>
+
+    <select id="getByKey" resultMap="smartUserAddrsMap">
+        select <include refid="allField"/>
+        from smart_user_addrs where uid = #{key}
+    </select>
+
+
+</mapper>
+

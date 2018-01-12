@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="smart.mall.dao.ComDictionaryMappingDao">
+
+    <resultMap id="comDictionaryMappingMap" type="smart.mall.domain.ComDictionaryMappingDO">
+        <id column="id" property="id"/>
+        <result column="dict_type" property="dictType"/>
+        <result column="dict_code_cloud" property="dictCodeCloud"/>
+        <result column="dict_code_third_sys" property="dictCodeThirdSys"/>
+        <result column="dict_code_third_type" property="dictCodeThirdType"/>
+        <result column="created_on" property="createdOn"/>
+        <result column="created_by" property="createdBy"/>
+        <result column="modified_on" property="modifiedOn"/>
+        <result column="modified_by" property="modifiedBy"/>
+    </resultMap>
+
+    <sql id="allField">
+        id,dict_type,dict_code_cloud,dict_code_third_sys,dict_code_third_type,created_on,created_by,modified_on,modified_by
+    </sql>
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="smart.mall.domain.ComDictionaryMappingDO">
+        insert into com_dictionary_mapping
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="dictType != null and dictType != ''" >
+                dict_type, 
+            </if>
+            <if test="dictCodeCloud != null and dictCodeCloud != ''" >
+                dict_code_cloud, 
+            </if>
+            <if test="dictCodeThirdSys != null and dictCodeThirdSys != ''" >
+                dict_code_third_sys, 
+            </if>
+            <if test="dictCodeThirdType != null and dictCodeThirdType != ''" >
+                dict_code_third_type, 
+            </if>
+            <if test="createdOn != null" >
+                created_on, 
+            </if>
+            <if test="createdBy != null and createdBy != ''" >
+                created_by, 
+            </if>
+            <if test="modifiedOn != null" >
+                modified_on, 
+            </if>
+            <if test="modifiedBy != null and modifiedBy != ''" >
+                modified_by, 
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="dictType != null and dictType != ''" >
+                #{dictType}, 
+            </if>
+            <if test="dictCodeCloud != null and dictCodeCloud != ''" >
+                #{dictCodeCloud}, 
+            </if>
+            <if test="dictCodeThirdSys != null and dictCodeThirdSys != ''" >
+                #{dictCodeThirdSys}, 
+            </if>
+            <if test="dictCodeThirdType != null and dictCodeThirdType != ''" >
+                #{dictCodeThirdType}, 
+            </if>
+            <if test="createdOn != null" >
+                #{createdOn}, 
+            </if>
+            <if test="createdBy != null and createdBy != ''" >
+                #{createdBy}, 
+            </if>
+            <if test="modifiedOn != null" >
+                #{modifiedOn}, 
+            </if>
+            <if test="modifiedBy != null and modifiedBy != ''" >
+                #{modifiedBy}, 
+            </if>
+        </trim>
+    </insert>
+
+    <update id="update" parameterType="smart.mall.domain.ComDictionaryMappingDO">
+        update com_dictionary_mapping
+        <set>
+            <if test="dictType != null" >
+                dict_type = #{dictType}, 
+            </if>
+            <if test="dictCodeCloud != null" >
+                dict_code_cloud = #{dictCodeCloud}, 
+            </if>
+            <if test="dictCodeThirdSys != null" >
+                dict_code_third_sys = #{dictCodeThirdSys}, 
+            </if>
+            <if test="dictCodeThirdType != null" >
+                dict_code_third_type = #{dictCodeThirdType}, 
+            </if>
+            <if test="createdOn != null" >
+                created_on = #{createdOn}, 
+            </if>
+            <if test="createdBy != null" >
+                created_by = #{createdBy}, 
+            </if>
+            <if test="modifiedOn != null" >
+                modified_on = #{modifiedOn}, 
+            </if>
+            <if test="modifiedBy != null" >
+                modified_by = #{modifiedBy}, 
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <update id="updateByExample">
+        update com_dictionary_mapping
+        <set>
+            <if test="update.dictType != null" >
+                dict_type = #{update.dictType}, 
+            </if>
+            <if test="update.dictCodeCloud != null" >
+                dict_code_cloud = #{update.dictCodeCloud}, 
+            </if>
+            <if test="update.dictCodeThirdSys != null" >
+                dict_code_third_sys = #{update.dictCodeThirdSys}, 
+            </if>
+            <if test="update.dictCodeThirdType != null" >
+                dict_code_third_type = #{update.dictCodeThirdType}, 
+            </if>
+            <if test="update.createdOn != null" >
+                created_on = #{update.createdOn}, 
+            </if>
+            <if test="update.createdBy != null" >
+                created_by = #{update.createdBy}, 
+            </if>
+            <if test="update.modifiedOn != null" >
+                modified_on = #{update.modifiedOn}, 
+            </if>
+            <if test="update.modifiedBy != null" >
+                modified_by = #{update.modifiedBy}, 
+            </if>
+        </set>
+        where 1 = 1 
+        <if test="example.id != null" >
+            and id = #{example.id} 
+        </if>
+        <if test="example.dictType != null" >
+            and dict_type = #{example.dictType} 
+        </if>
+        <if test="example.dictCodeCloud != null" >
+            and dict_code_cloud = #{example.dictCodeCloud} 
+        </if>
+        <if test="example.dictCodeThirdSys != null" >
+            and dict_code_third_sys = #{example.dictCodeThirdSys} 
+        </if>
+        <if test="example.dictCodeThirdType != null" >
+            and dict_code_third_type = #{example.dictCodeThirdType} 
+        </if>
+        <if test="example.createdOn != null" >
+            and created_on = #{example.createdOn} 
+        </if>
+        <if test="example.createdBy != null" >
+            and created_by = #{example.createdBy} 
+        </if>
+        <if test="example.modifiedOn != null" >
+            and modified_on = #{example.modifiedOn} 
+        </if>
+        <if test="example.modifiedBy != null" >
+            and modified_by = #{example.modifiedBy} 
+        </if>
+    </update>
+
+    <delete id="delete">
+        delete from com_dictionary_mapping
+        where id = #{key}
+    </delete>
+
+    <delete id="deleteByKey">
+        delete from com_dictionary_mapping
+        where id = #{delete.id}
+    </delete>
+
+    <delete id="deleteByExample"> 
+        delete from com_dictionary_mapping
+        where 1 = 1 
+        <if test="example.id != null" >
+            and id = #{example.id} 
+        </if>
+        <if test="example.dictType != null" >
+            and dict_type = #{example.dictType} 
+        </if>
+        <if test="example.dictCodeCloud != null" >
+            and dict_code_cloud = #{example.dictCodeCloud} 
+        </if>
+        <if test="example.dictCodeThirdSys != null" >
+            and dict_code_third_sys = #{example.dictCodeThirdSys} 
+        </if>
+        <if test="example.dictCodeThirdType != null" >
+            and dict_code_third_type = #{example.dictCodeThirdType} 
+        </if>
+        <if test="example.createdOn != null" >
+            and created_on = #{example.createdOn} 
+        </if>
+        <if test="example.createdBy != null" >
+            and created_by = #{example.createdBy} 
+        </if>
+        <if test="example.modifiedOn != null" >
+            and modified_on = #{example.modifiedOn} 
+        </if>
+        <if test="example.modifiedBy != null" >
+            and modified_by = #{example.modifiedBy} 
+        </if>
+    </delete>
+
+    <select id="countByExample" resultType="java.lang.Integer"> 
+        select count(*) from com_dictionary_mapping where 1 = 1 
+        <if test="example.id != null" >
+            and id = #{example.id} 
+        </if>
+        <if test="example.dictType != null and example.dictType != ''" >
+            and dict_type = #{example.dictType} 
+        </if>
+        <if test="example.dictCodeCloud != null and example.dictCodeCloud != ''" >
+            and dict_code_cloud = #{example.dictCodeCloud} 
+        </if>
+        <if test="example.dictCodeThirdSys != null and example.dictCodeThirdSys != ''" >
+            and dict_code_third_sys = #{example.dictCodeThirdSys} 
+        </if>
+        <if test="example.dictCodeThirdType != null and example.dictCodeThirdType != ''" >
+            and dict_code_third_type = #{example.dictCodeThirdType} 
+        </if>
+        <if test="example.createdOn != null" >
+            and created_on = #{example.createdOn} 
+        </if>
+        <if test="example.createdBy != null and example.createdBy != ''" >
+            and created_by = #{example.createdBy} 
+        </if>
+        <if test="example.modifiedOn != null" >
+            and modified_on = #{example.modifiedOn} 
+        </if>
+        <if test="example.modifiedBy != null and example.modifiedBy != ''" >
+            and modified_by = #{example.modifiedBy} 
+        </if>
+    </select>
+
+    <select id="listByExample"  resultMap="comDictionaryMappingMap">
+        select <include refid="allField" />
+        from com_dictionary_mapping where 1 = 1 
+        <if test="example.id != null" >
+            and id = #{example.id} 
+        </if>
+        <if test="example.dictType != null and example.dictType != ''" >
+            and dict_type = #{example.dictType} 
+        </if>
+        <if test="example.dictCodeCloud != null and example.dictCodeCloud != ''" >
+            and dict_code_cloud = #{example.dictCodeCloud} 
+        </if>
+        <if test="example.dictCodeThirdSys != null and example.dictCodeThirdSys != ''" >
+            and dict_code_third_sys = #{example.dictCodeThirdSys} 
+        </if>
+        <if test="example.dictCodeThirdType != null and example.dictCodeThirdType != ''" >
+            and dict_code_third_type = #{example.dictCodeThirdType} 
+        </if>
+        <if test="example.createdOn != null" >
+            and created_on = #{example.createdOn} 
+        </if>
+        <if test="example.createdBy != null and example.createdBy != ''" >
+            and created_by = #{example.createdBy} 
+        </if>
+        <if test="example.modifiedOn != null" >
+            and modified_on = #{example.modifiedOn} 
+        </if>
+        <if test="example.modifiedBy != null and example.modifiedBy != ''" >
+            and modified_by = #{example.modifiedBy} 
+        </if>
+        <if test="orderBy != null" >
+            order by ${orderBy} 
+        </if>
+        limit ${pageSize} offset ${(page - 1) * pageSize}
+    </select>
+
+    <select id="getByKey" resultMap="comDictionaryMappingMap">
+        select <include refid="allField"/>
+        from com_dictionary_mapping where id = #{key}
+    </select>
+
+
+</mapper>
+

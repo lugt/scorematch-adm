@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="smart.mall.dao.ComDictionaryDao">
+
+    <resultMap id="comDictionaryMap" type="smart.mall.domain.ComDictionaryDO">
+        <id column="dict_id" property="dictId"/>
+        <result column="dict_code" property="dictCode"/>
+        <result column="dict_name" property="dictName"/>
+        <result column="dict_type" property="dictType"/>
+        <result column="parent_dict_id" property="parentDictId"/>
+        <result column="dict_name_en" property="dictNameEn"/>
+        <result column="enable_state" property="enableState"/>
+        <result column="order_no" property="orderNo"/>
+        <result column="dict_ico" property="dictIco"/>
+        <result column="created_on" property="createdOn"/>
+        <result column="created_by" property="createdBy"/>
+        <result column="modified_on" property="modifiedOn"/>
+        <result column="modified_by" property="modifiedBy"/>
+    </resultMap>
+
+    <sql id="allField">
+        dict_id,dict_code,dict_name,dict_type,parent_dict_id,dict_name_en,enable_state,order_no,dict_ico,created_on,created_by,modified_on,modified_by
+    </sql>
+
+    <insert id="save" useGeneratedKeys="false" keyProperty="dictId" parameterType="smart.mall.domain.ComDictionaryDO">
+        insert into com_dictionary
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="dictId != null" >
+                dict_id, 
+            </if>
+            <if test="dictCode != null and dictCode != ''" >
+                dict_code, 
+            </if>
+            <if test="dictName != null and dictName != ''" >
+                dict_name, 
+            </if>
+            <if test="dictType != null and dictType != ''" >
+                dict_type, 
+            </if>
+            <if test="parentDictId != null" >
+                parent_dict_id, 
+            </if>
+            <if test="dictNameEn != null and dictNameEn != ''" >
+                dict_name_en, 
+            </if>
+            <if test="enableState != null and enableState != ''" >
+                enable_state, 
+            </if>
+            <if test="orderNo != null" >
+                order_no, 
+            </if>
+            <if test="dictIco != null and dictIco != ''" >
+                dict_ico, 
+            </if>
+            <if test="createdOn != null" >
+                created_on, 
+            </if>
+            <if test="createdBy != null and createdBy != ''" >
+                created_by, 
+            </if>
+            <if test="modifiedOn != null" >
+                modified_on, 
+            </if>
+            <if test="modifiedBy != null and modifiedBy != ''" >
+                modified_by, 
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="dictId != null" >
+                #{dictId}, 
+            </if>
+            <if test="dictCode != null and dictCode != ''" >
+                #{dictCode}, 
+            </if>
+            <if test="dictName != null and dictName != ''" >
+                #{dictName}, 
+            </if>
+            <if test="dictType != null and dictType != ''" >
+                #{dictType}, 
+            </if>
+            <if test="parentDictId != null" >
+                #{parentDictId}, 
+            </if>
+            <if test="dictNameEn != null and dictNameEn != ''" >
+                #{dictNameEn}, 
+            </if>
+            <if test="enableState != null and enableState != ''" >
+                #{enableState}, 
+            </if>
+            <if test="orderNo != null" >
+                #{orderNo}, 
+            </if>
+            <if test="dictIco != null and dictIco != ''" >
+                #{dictIco}, 
+            </if>
+            <if test="createdOn != null" >
+                #{createdOn}, 
+            </if>
+            <if test="createdBy != null and createdBy != ''" >
+                #{createdBy}, 
+            </if>
+            <if test="modifiedOn != null" >
+                #{modifiedOn}, 
+            </if>
+            <if test="modifiedBy != null and modifiedBy != ''" >
+                #{modifiedBy}, 
+            </if>
+        </trim>
+    </insert>
+
+    <update id="update" parameterType="smart.mall.domain.ComDictionaryDO">
+        update com_dictionary
+        <set>
+            <if test="dictCode != null" >
+                dict_code = #{dictCode}, 
+            </if>
+            <if test="dictName != null" >
+                dict_name = #{dictName}, 
+            </if>
+            <if test="dictType != null" >
+                dict_type = #{dictType}, 
+            </if>
+            <if test="parentDictId != null" >
+                parent_dict_id = #{parentDictId}, 
+            </if>
+            <if test="dictNameEn != null" >
+                dict_name_en = #{dictNameEn}, 
+            </if>
+            <if test="enableState != null" >
+                enable_state = #{enableState}, 
+            </if>
+            <if test="orderNo != null" >
+                order_no = #{orderNo}, 
+            </if>
+            <if test="dictIco != null" >
+                dict_ico = #{dictIco}, 
+            </if>
+            <if test="createdOn != null" >
+                created_on = #{createdOn}, 
+            </if>
+            <if test="createdBy != null" >
+                created_by = #{createdBy}, 
+            </if>
+            <if test="modifiedOn != null" >
+                modified_on = #{modifiedOn}, 
+            </if>
+            <if test="modifiedBy != null" >
+                modified_by = #{modifiedBy}, 
+            </if>
+        </set>
+        where dict_id = #{dictId}
+    </update>
+
+    <update id="updateByExample">
+        update com_dictionary
+        <set>
+            <if test="update.dictCode != null" >
+                dict_code = #{update.dictCode}, 
+            </if>
+            <if test="update.dictName != null" >
+                dict_name = #{update.dictName}, 
+            </if>
+            <if test="update.dictType != null" >
+                dict_type = #{update.dictType}, 
+            </if>
+            <if test="update.parentDictId != null" >
+                parent_dict_id = #{update.parentDictId}, 
+            </if>
+            <if test="update.dictNameEn != null" >
+                dict_name_en = #{update.dictNameEn}, 
+            </if>
+            <if test="update.enableState != null" >
+                enable_state = #{update.enableState}, 
+            </if>
+            <if test="update.orderNo != null" >
+                order_no = #{update.orderNo}, 
+            </if>
+            <if test="update.dictIco != null" >
+                dict_ico = #{update.dictIco}, 
+            </if>
+            <if test="update.createdOn != null" >
+                created_on = #{update.createdOn}, 
+            </if>
+            <if test="update.createdBy != null" >
+                created_by = #{update.createdBy}, 
+            </if>
+            <if test="update.modifiedOn != null" >
+                modified_on = #{update.modifiedOn}, 
+            </if>
+            <if test="update.modifiedBy != null" >
+                modified_by = #{update.modifiedBy}, 
+            </if>
+        </set>
+        where 1 = 1 
+        <if test="example.dictId != null" >
+            and dict_id = #{example.dictId} 
+        </if>
+        <if test="example.dictCode != null" >
+            and dict_code = #{example.dictCode} 
+        </if>
+        <if test="example.dictName != null" >
+            and dict_name = #{example.dictName} 
+        </if>
+        <if test="example.dictType != null" >
+            and dict_type = #{example.dictType} 
+        </if>
+        <if test="example.parentDictId != null" >
+            and parent_dict_id = #{example.parentDictId} 
+        </if>
+        <if test="example.dictNameEn != null" >
+            and dict_name_en = #{example.dictNameEn} 
+        </if>
+        <if test="example.enableState != null" >
+            and enable_state = #{example.enableState} 
+        </if>
+        <if test="example.orderNo != null" >
+            and order_no = #{example.orderNo} 
+        </if>
+        <if test="example.dictIco != null" >
+            and dict_ico = #{example.dictIco} 
+        </if>
+        <if test="example.createdOn != null" >
+            and created_on = #{example.createdOn} 
+        </if>
+        <if test="example.createdBy != null" >
+            and created_by = #{example.createdBy} 
+        </if>
+        <if test="example.modifiedOn != null" >
+            and modified_on = #{example.modifiedOn} 
+        </if>
+        <if test="example.modifiedBy != null" >
+            and modified_by = #{example.modifiedBy} 
+        </if>
+    </update>
+
+    <delete id="delete">
+        delete from com_dictionary
+        where dict_id = #{key}
+    </delete>
+
+    <delete id="deleteByKey">
+        delete from com_dictionary
+        where dict_id = #{delete.dictId}
+    </delete>
+
+    <delete id="deleteByExample"> 
+        delete from com_dictionary
+        where 1 = 1 
+        <if test="example.dictId != null" >
+            and dict_id = #{example.dictId} 
+        </if>
+        <if test="example.dictCode != null" >
+            and dict_code = #{example.dictCode} 
+        </if>
+        <if test="example.dictName != null" >
+            and dict_name = #{example.dictName} 
+        </if>
+        <if test="example.dictType != null" >
+            and dict_type = #{example.dictType} 
+        </if>
+        <if test="example.parentDictId != null" >
+            and parent_dict_id = #{example.parentDictId} 
+        </if>
+        <if test="example.dictNameEn != null" >
+            and dict_name_en = #{example.dictNameEn} 
+        </if>
+        <if test="example.enableState != null" >
+            and enable_state = #{example.enableState} 
+        </if>
+        <if test="example.orderNo != null" >
+            and order_no = #{example.orderNo} 
+        </if>
+        <if test="example.dictIco != null" >
+            and dict_ico = #{example.dictIco} 
+        </if>
+        <if test="example.createdOn != null" >
+            and created_on = #{example.createdOn} 
+        </if>
+        <if test="example.createdBy != null" >
+            and created_by = #{example.createdBy} 
+        </if>
+        <if test="example.modifiedOn != null" >
+            and modified_on = #{example.modifiedOn} 
+        </if>
+        <if test="example.modifiedBy != null" >
+            and modified_by = #{example.modifiedBy} 
+        </if>
+    </delete>
+
+    <select id="countByExample" resultType="java.lang.Integer"> 
+        select count(*) from com_dictionary where 1 = 1 
+        <if test="example.dictId != null" >
+            and dict_id = #{example.dictId} 
+        </if>
+        <if test="example.dictCode != null and example.dictCode != ''" >
+            and dict_code = #{example.dictCode} 
+        </if>
+        <if test="example.dictName != null and example.dictName != ''" >
+            and dict_name = #{example.dictName} 
+        </if>
+        <if test="example.dictType != null and example.dictType != ''" >
+            and dict_type = #{example.dictType} 
+        </if>
+        <if test="example.parentDictId != null" >
+            and parent_dict_id = #{example.parentDictId} 
+        </if>
+        <if test="example.dictNameEn != null and example.dictNameEn != ''" >
+            and dict_name_en = #{example.dictNameEn} 
+        </if>
+        <if test="example.enableState != null and example.enableState != ''" >
+            and enable_state = #{example.enableState} 
+        </if>
+        <if test="example.orderNo != null" >
+            and order_no = #{example.orderNo} 
+        </if>
+        <if test="example.dictIco != null and example.dictIco != ''" >
+            and dict_ico = #{example.dictIco} 
+        </if>
+        <if test="example.createdOn != null" >
+            and created_on = #{example.createdOn} 
+        </if>
+        <if test="example.createdBy != null and example.createdBy != ''" >
+            and created_by = #{example.createdBy} 
+        </if>
+        <if test="example.modifiedOn != null" >
+            and modified_on = #{example.modifiedOn} 
+        </if>
+        <if test="example.modifiedBy != null and example.modifiedBy != ''" >
+            and modified_by = #{example.modifiedBy} 
+        </if>
+    </select>
+
+    <select id="listByExample"  resultMap="comDictionaryMap">
+        select <include refid="allField" />
+        from com_dictionary where 1 = 1 
+        <if test="example.dictId != null" >
+            and dict_id = #{example.dictId} 
+        </if>
+        <if test="example.dictCode != null and example.dictCode != ''" >
+            and dict_code = #{example.dictCode} 
+        </if>
+        <if test="example.dictName != null and example.dictName != ''" >
+            and dict_name = #{example.dictName} 
+        </if>
+        <if test="example.dictType != null and example.dictType != ''" >
+            and dict_type = #{example.dictType} 
+        </if>
+        <if test="example.parentDictId != null" >
+            and parent_dict_id = #{example.parentDictId} 
+        </if>
+        <if test="example.dictNameEn != null and example.dictNameEn != ''" >
+            and dict_name_en = #{example.dictNameEn} 
+        </if>
+        <if test="example.enableState != null and example.enableState != ''" >
+            and enable_state = #{example.enableState} 
+        </if>
+        <if test="example.orderNo != null" >
+            and order_no = #{example.orderNo} 
+        </if>
+        <if test="example.dictIco != null and example.dictIco != ''" >
+            and dict_ico = #{example.dictIco} 
+        </if>
+        <if test="example.createdOn != null" >
+            and created_on = #{example.createdOn} 
+        </if>
+        <if test="example.createdBy != null and example.createdBy != ''" >
+            and created_by = #{example.createdBy} 
+        </if>
+        <if test="example.modifiedOn != null" >
+            and modified_on = #{example.modifiedOn} 
+        </if>
+        <if test="example.modifiedBy != null and example.modifiedBy != ''" >
+            and modified_by = #{example.modifiedBy} 
+        </if>
+        <if test="orderBy != null" >
+            order by ${orderBy} 
+        </if>
+        limit ${pageSize} offset ${(page - 1) * pageSize}
+    </select>
+
+    <select id="getByKey" resultMap="comDictionaryMap">
+        select <include refid="allField"/>
+        from com_dictionary where dict_id = #{key}
+    </select>
+
+
+</mapper>
+

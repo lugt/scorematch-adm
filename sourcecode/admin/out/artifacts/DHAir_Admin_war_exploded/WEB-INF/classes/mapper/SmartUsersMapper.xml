@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="smart.mall.dao.SmartUsersDao"> 
+
+    <resultMap id="smartUsersMap" type="smart.mall.domain.SmartUsersDO">
+        <id column="uid" property="uid"/>
+        <result column="usn" property="usn"/>
+        <result column="pss" property="pss"/>
+        <result column="name" property="name"/>
+        <result column="title" property="title"/>
+        <result column="priv" property="priv"/>
+        <result column="state" property="state"/>
+        <result column="sess" property="sess"/>
+        <result column="phone" property="phone"/>
+    </resultMap>
+
+    <sql id="allField">
+        uid,usn,pss,name,title,priv,state,sess,phone
+    </sql>
+
+    <insert id="save" useGeneratedKeys="false" keyProperty="uid" parameterType="smart.mall.domain.SmartUsersDO">
+        insert into smart_users
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="uid != null" >
+                uid, 
+            </if>
+            <if test="usn != null and usn != ''" >
+                usn, 
+            </if>
+            <if test="pss != null and pss != ''" >
+                pss, 
+            </if>
+            <if test="name != null and name != ''" >
+                name, 
+            </if>
+            <if test="title != null and title != ''" >
+                title, 
+            </if>
+            <if test="priv != null and priv != ''" >
+                priv, 
+            </if>
+            <if test="state != null" >
+                state, 
+            </if>
+            <if test="sess != null and sess != ''" >
+                sess, 
+            </if>
+            <if test="phone != null and phone != ''" >
+                phone, 
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="uid != null" >
+                #{uid}, 
+            </if>
+            <if test="usn != null and usn != ''" >
+                #{usn}, 
+            </if>
+            <if test="pss != null and pss != ''" >
+                #{pss}, 
+            </if>
+            <if test="name != null and name != ''" >
+                #{name}, 
+            </if>
+            <if test="title != null and title != ''" >
+                #{title}, 
+            </if>
+            <if test="priv != null and priv != ''" >
+                #{priv}, 
+            </if>
+            <if test="state != null" >
+                #{state}, 
+            </if>
+            <if test="sess != null and sess != ''" >
+                #{sess}, 
+            </if>
+            <if test="phone != null and phone != ''" >
+                #{phone}, 
+            </if>
+        </trim>
+    </insert>
+
+    <update id="update" parameterType="smart.mall.domain.SmartUsersDO">
+        update smart_users
+        <set>
+            <if test="usn != null" >
+                usn = #{usn}, 
+            </if>
+            <if test="pss != null" >
+                pss = #{pss}, 
+            </if>
+            <if test="name != null" >
+                name = #{name}, 
+            </if>
+            <if test="title != null" >
+                title = #{title}, 
+            </if>
+            <if test="priv != null" >
+                priv = #{priv}, 
+            </if>
+            <if test="state != null" >
+                state = #{state}, 
+            </if>
+            <if test="sess != null" >
+                sess = #{sess}, 
+            </if>
+            <if test="phone != null" >
+                phone = #{phone}, 
+            </if>
+        </set>
+        where uid = #{uid}
+    </update>
+
+    <update id="updateByExample">
+        update smart_users
+        <set>
+            <if test="update.usn != null" >
+                usn = #{update.usn}, 
+            </if>
+            <if test="update.pss != null" >
+                pss = #{update.pss}, 
+            </if>
+            <if test="update.name != null" >
+                name = #{update.name}, 
+            </if>
+            <if test="update.title != null" >
+                title = #{update.title}, 
+            </if>
+            <if test="update.priv != null" >
+                priv = #{update.priv}, 
+            </if>
+            <if test="update.state != null" >
+                state = #{update.state}, 
+            </if>
+            <if test="update.sess != null" >
+                sess = #{update.sess}, 
+            </if>
+            <if test="update.phone != null" >
+                phone = #{update.phone}, 
+            </if>
+        </set>
+        where 1 = 1 
+        <if test="example.uid != null" >
+            and uid = #{example.uid} 
+        </if>
+        <if test="example.usn != null" >
+            and usn = #{example.usn} 
+        </if>
+        <if test="example.pss != null" >
+            and pss = #{example.pss} 
+        </if>
+        <if test="example.name != null" >
+            and name = #{example.name} 
+        </if>
+        <if test="example.title != null" >
+            and title = #{example.title} 
+        </if>
+        <if test="example.priv != null" >
+            and priv = #{example.priv} 
+        </if>
+        <if test="example.state != null" >
+            and state = #{example.state} 
+        </if>
+        <if test="example.sess != null" >
+            and sess = #{example.sess} 
+        </if>
+        <if test="example.phone != null" >
+            and phone = #{example.phone} 
+        </if>
+    </update>
+
+    <delete id="delete">
+        delete from smart_users
+        where uid = #{key}
+    </delete>
+
+    <delete id="deleteByKey">
+        delete from smart_users
+        where uid = #{delete.uid}
+    </delete>
+
+    <delete id="deleteByExample"> 
+        delete from smart_users
+        where 1 = 1 
+        <if test="example.uid != null" >
+            and uid = #{example.uid} 
+        </if>
+        <if test="example.usn != null" >
+            and usn = #{example.usn} 
+        </if>
+        <if test="example.pss != null" >
+            and pss = #{example.pss} 
+        </if>
+        <if test="example.name != null" >
+            and name = #{example.name} 
+        </if>
+        <if test="example.title != null" >
+            and title = #{example.title} 
+        </if>
+        <if test="example.priv != null" >
+            and priv = #{example.priv} 
+        </if>
+        <if test="example.state != null" >
+            and state = #{example.state} 
+        </if>
+        <if test="example.sess != null" >
+            and sess = #{example.sess} 
+        </if>
+        <if test="example.phone != null" >
+            and phone = #{example.phone} 
+        </if>
+    </delete>
+
+    <select id="countByExample" resultType="java.lang.Integer"> 
+        select count(*) from smart_users where 1 = 1 
+        <if test="example.uid != null" >
+            and uid = #{example.uid} 
+        </if>
+        <if test="example.usn != null and example.usn != ''" >
+            and usn = #{example.usn} 
+        </if>
+        <if test="example.pss != null and example.pss != ''" >
+            and pss = #{example.pss} 
+        </if>
+        <if test="example.name != null and example.name != ''" >
+            and name = #{example.name} 
+        </if>
+        <if test="example.title != null and example.title != ''" >
+            and title = #{example.title} 
+        </if>
+        <if test="example.priv != null and example.priv != ''" >
+            and priv = #{example.priv} 
+        </if>
+        <if test="example.state != null" >
+            and state = #{example.state} 
+        </if>
+        <if test="example.sess != null and example.sess != ''" >
+            and sess = #{example.sess} 
+        </if>
+        <if test="example.phone != null and example.phone != ''" >
+            and phone = #{example.phone} 
+        </if>
+    </select>
+
+    <select id="listByExample"  resultMap="smartUsersMap">
+        select <include refid="allField" />
+        from smart_users where 1 = 1 
+        <if test="example.uid != null" >
+            and uid = #{example.uid} 
+        </if>
+        <if test="example.usn != null and example.usn != ''" >
+            and usn = #{example.usn} 
+        </if>
+        <if test="example.pss != null and example.pss != ''" >
+            and pss = #{example.pss} 
+        </if>
+        <if test="example.name != null and example.name != ''" >
+            and name = #{example.name} 
+        </if>
+        <if test="example.title != null and example.title != ''" >
+            and title = #{example.title} 
+        </if>
+        <if test="example.priv != null and example.priv != ''" >
+            and priv = #{example.priv} 
+        </if>
+        <if test="example.state != null" >
+            and state = #{example.state} 
+        </if>
+        <if test="example.sess != null and example.sess != ''" >
+            and sess = #{example.sess} 
+        </if>
+        <if test="example.phone != null and example.phone != ''" >
+            and phone = #{example.phone} 
+        </if>
+        <if test="orderBy != null" >
+            order by ${orderBy} 
+        </if>
+        limit ${pageSize} offset ${(page - 1) * pageSize}
+    </select>
+
+    <select id="getByKey" resultMap="smartUsersMap">
+        select <include refid="allField"/>
+        from smart_users where uid = #{key}
+    </select>
+
+
+</mapper>
+
