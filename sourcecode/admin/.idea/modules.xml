@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/DHAir-Admin.iml" filepath="$PROJECT_DIR$/DHAir-Admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/scorematch.iml" filepath="$PROJECT_DIR$/scorematch.iml" />
     </modules>
   </component>
 </project>

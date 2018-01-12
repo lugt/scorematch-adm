@@ -2,7 +2,7 @@
   <artifact type="jar" name="SmartPetsAdmin:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/SmartPetsAdmin_jar</output-path>
     <root id="archive" name="SmartPets.jar">
-      <element id="module-output" name="DHAir-Admin" />
+      <element id="module-output" name="scorematch" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/springframework/integration/spring-integration-core/4.3.12.RELEASE/spring-integration-core-4.3.12.RELEASE.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-starter-ws/1.4.7.RELEASE/spring-boot-starter-ws-1.4.7.RELEASE.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/stax/stax-api/1.0.1/stax-api-1.0.1.jar" path-in-jar="/" />

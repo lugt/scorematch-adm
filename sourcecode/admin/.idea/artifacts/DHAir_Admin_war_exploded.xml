@@ -4,7 +4,7 @@
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="DHAir-Admin" />
+          <element id="module-output" name="scorematch" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: io.netty:netty-all:4.1.12.Final" />
@@ -110,7 +110,7 @@
           <element id="library" level="project" name="Maven: org.objenesis:objenesis:2.1" />
         </element>
       </element>
-      <element id="javaee-facet-resources" facet="DHAir-Admin/web/Web" />
+      <element id="javaee-facet-resources" facet="scorematch/web/Web" />
     </root>
   </artifact>
 </component>
